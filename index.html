@@ -1226,6 +1226,87 @@
         font-size: 48px !important;
       }
     }
+
+    /* Upload thumbnail fixes */
+    .dropzone[data-drop="icon"] .upload-plus,
+    .dropzone[data-drop="banner"] .upload-plus,
+    .dropzone[data-drop="screenshots"] .upload-plus {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      text-align: center !important;
+      padding: 0 !important;
+      line-height: .82 !important;
+      font-size: 62px !important;
+      font-weight: 300 !important;
+      background-image: var(--upload-thumb-bg, radial-gradient(circle at 34% 28%, rgba(255,255,255,.72), transparent 25%), linear-gradient(135deg, #ffe7b4 0%, #ff917f 100%)) !important;
+      background-size: cover !important;
+      background-position: center !important;
+      background-repeat: no-repeat !important;
+    }
+
+    .dropzone[data-drop="icon"] .upload-plus::before,
+    .dropzone[data-drop="banner"] .upload-plus::before,
+    .dropzone[data-drop="screenshots"] .upload-plus::before {
+      content: "+";
+      transform: translateY(-3px);
+    }
+
+    .dropzone[data-drop="icon"] .upload-plus.has-image::before,
+    .dropzone[data-drop="banner"] .upload-plus.has-image::before,
+    .dropzone[data-drop="screenshots"] .upload-plus.has-image::before {
+      content: "";
+    }
+
+    .dropzone[data-drop="icon"] .upload-plus,
+    .dropzone[data-drop="banner"] .upload-plus,
+    .dropzone[data-drop="screenshots"] .upload-plus {
+      font-size: 0 !important;
+    }
+
+    .screenshot-upload-strip {
+      grid-column: 1 / -1;
+      display: none;
+      gap: 8px;
+      overflow-x: auto;
+      padding: 4px 2px 2px;
+      scrollbar-width: thin;
+    }
+
+    .screenshot-upload-strip.visible {
+      display: flex;
+    }
+
+    .screenshot-upload-thumb {
+      flex: 0 0 auto;
+      width: 54px;
+      height: 54px;
+      border-radius: 14px;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      border: 1px solid rgba(0,0,0,.08);
+      box-shadow: 0 8px 18px rgba(0,0,0,.08);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .screenshot-upload-thumb::after {
+      content: attr(data-index);
+      position: absolute;
+      right: 5px;
+      bottom: 5px;
+      min-width: 18px;
+      height: 18px;
+      display: grid;
+      place-items: center;
+      border-radius: 999px;
+      background: rgba(0,0,0,.52);
+      color: #fff;
+      font-size: 10px;
+      font-weight: 900;
+      backdrop-filter: blur(8px);
+    }
   </style>
 </head>
 <body data-platform="yandex">
@@ -1321,6 +1402,7 @@
                 <strong>Загрузить скриншоты</strong>
                 <span>До 10 изображений</span>
               </span>
+              <div class="screenshot-upload-strip" id="screenshotsPreviewStrip" aria-hidden="true"></div>
               <input id="screenshotsInput" type="file" accept="image/*" multiple />
             </label>
             <div class="meta" id="screenshotsMeta"><span class="chip">нажми на +</span><span class="chip">0 / 10 screenshots</span></div>
@@ -1618,28 +1700,30 @@
       $$('[data-text="rating"]').forEach(el => el.textContent = state.rating);
     }
 
+    function setUploadThumb(el, imageUrl) {
+      if (!el) return;
+      if (imageUrl) {
+        el.style.setProperty('--upload-thumb-bg', `url(${imageUrl})`);
+        el.classList.add('has-image');
+      } else {
+        el.style.removeProperty('--upload-thumb-bg');
+        el.classList.remove('has-image');
+      }
+      el.textContent = '+';
+    }
+
     function updateAssets() {
       $$('[data-asset="icon"]').forEach(img => {
         img.src = state.icon;
-        img.style.objectFit = state.iconFit;
+        img.style.objectFit = 'cover';
       });
       $$('[data-asset="banner"]').forEach(img => {
         img.src = state.banner;
-        img.style.objectFit = state.bannerFit;
+        img.style.objectFit = 'cover';
       });
 
-      const iconThumb = $('#iconThumb');
-      const bannerThumb = $('#bannerThumb');
-      iconThumb.style.backgroundImage = state.icon ? `url(${state.icon})` : '';
-      iconThumb.style.backgroundSize = state.iconFit;
-      iconThumb.style.backgroundPosition = 'center';
-iconThumb.textContent = state.icon ? '' : '+';
-
-      bannerThumb.style.backgroundImage = state.banner ? `url(${state.banner})` : '';
-      bannerThumb.style.backgroundSize = state.bannerFit;
-      bannerThumb.style.backgroundPosition = 'center';
-bannerThumb.textContent = state.banner ? '' : '+';
-
+      setUploadThumb($('#iconThumb'), state.icon);
+      setUploadThumb($('#bannerThumb'), state.banner);
       updateScreenshots();
     }
 
@@ -1677,24 +1761,29 @@ link.href = state.platform === 'gplay' && game.playUrl ? game.playUrl : game.url
       });
     }
 
+    function renderScreenshotUploadStrip() {
+      const strip = $('#screenshotsPreviewStrip');
+      if (!strip) return;
+      strip.innerHTML = '';
+      state.screenshots.forEach((src, index) => {
+        const item = document.createElement('span');
+        item.className = 'screenshot-upload-thumb';
+        item.style.backgroundImage = `url(${src})`;
+        item.dataset.index = index + 1;
+        strip.appendChild(item);
+      });
+      strip.classList.toggle('visible', state.screenshots.length > 0);
+    }
+
     function updateScreenshots() {
       $$('[data-screenshot]').forEach(img => {
         const index = Number(img.dataset.screenshot);
         img.src = state.screenshots[index] || '';
-        img.style.objectFit = state.screenshotFit;
+        img.style.objectFit = 'cover';
       });
 
-      const screenshotsThumb = $('#screenshotsThumb');
-      if (!screenshotsThumb) return;
-      if (state.screenshots.length) {
-        screenshotsThumb.style.backgroundImage = `url(${state.screenshots[0]})`;
-        screenshotsThumb.style.backgroundSize = state.screenshotFit;
-        screenshotsThumb.style.backgroundPosition = 'center';
-        screenshotsThumb.innerHTML = `<span class="screenshot-count">${state.screenshots.length}</span>`;
-      } else {
-        screenshotsThumb.style.backgroundImage = '';
-screenshotsThumb.innerHTML = '<span class="screenshot-count">+</span>'; 
-      }
+      setUploadThumb($('#screenshotsThumb'), state.screenshots[0] || '');
+      renderScreenshotUploadStrip();
     }
 
     function setPlatform(platform) {
