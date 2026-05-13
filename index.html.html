@@ -1,0 +1,1973 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>FB / Yandex Games Asset Preview</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --apple-bg: #f5f5f7;
+      --apple-card: rgba(255, 255, 255, .74);
+      --apple-card-solid: #fff;
+      --apple-border: rgba(0, 0, 0, .08);
+      --apple-text: #1d1d1f;
+      --apple-muted: #6e6e73;
+      --apple-soft: rgba(255, 255, 255, .52);
+      --shadow: 0 24px 70px rgba(0, 0, 0, .12);
+      --shadow-soft: 0 12px 32px rgba(0, 0, 0, .10);
+      --radius-xl: 34px;
+      --radius-lg: 24px;
+      --radius-md: 18px;
+      --accent: #ffcc00;
+      --accent-2: #ff2d55;
+      --platform-bg: #f7f7fa;
+      --platform-panel: #fff;
+      --platform-text: #161617;
+      --platform-muted: #75757d;
+      --platform-line: rgba(0,0,0,.08);
+      --platform-soft: rgba(0,0,0,.045);
+      --focus: 0 0 0 4px rgba(0, 122, 255, .16);
+      --font: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", Inter, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    [data-platform="fb"] {
+      --accent: #1877f2;
+      --accent-2: #00a6ff;
+      --platform-bg: #f0f2f5;
+      --platform-panel: #ffffff;
+      --platform-text: #050505;
+      --platform-muted: #65676b;
+      --platform-line: rgba(0,0,0,.10);
+      --platform-soft: rgba(24,119,242,.08);
+    }
+
+    [data-platform="yandex"] {
+      --accent: #ffcc00;
+      --accent-2: #ff3b30;
+      --platform-bg: #f6f7fb;
+      --platform-panel: #ffffff;
+      --platform-text: #1d1d1f;
+      --platform-muted: #74747c;
+      --platform-line: rgba(0,0,0,.08);
+      --platform-soft: rgba(255,204,0,.20);
+    }
+
+    [data-platform="appstore"] {
+      --accent: #007aff;
+      --accent-2: #5ac8fa;
+      --platform-bg: #f5f5f7;
+      --platform-panel: #ffffff;
+      --platform-text: #1d1d1f;
+      --platform-muted: #6e6e73;
+      --platform-line: rgba(0,0,0,.08);
+      --platform-soft: rgba(0,122,255,.09);
+    }
+
+    [data-platform="gplay"] {
+      --accent: #01875f;
+      --accent-2: #34a853;
+      --platform-bg: #ffffff;
+      --platform-panel: #ffffff;
+      --platform-text: #202124;
+      --platform-muted: #5f6368;
+      --platform-line: rgba(32,33,36,.11);
+      --platform-soft: rgba(1,135,95,.09);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: var(--font);
+      color: var(--apple-text);
+      background:
+        radial-gradient(circle at 12% 6%, rgba(255,255,255,.95) 0 18%, transparent 32%),
+        radial-gradient(circle at 82% 12%, color-mix(in srgb, var(--accent) 32%, transparent) 0 18%, transparent 36%),
+        radial-gradient(circle at 78% 82%, color-mix(in srgb, var(--accent-2) 18%, transparent) 0 17%, transparent 38%),
+        linear-gradient(135deg, #f9f9fb 0%, #edf0f6 45%, #f7f7fa 100%);
+      overflow-x: hidden;
+    }
+
+    button, input, select { font: inherit; }
+    button { cursor: pointer; }
+
+    .app {
+      width: min(1500px, calc(100vw - 32px));
+      margin: 0 auto;
+      padding: 28px 0 46px;
+    }
+
+    .top-hero {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 18px;
+      align-items: end;
+      margin-bottom: 22px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border: 1px solid var(--apple-border);
+      border-radius: 999px;
+      background: rgba(255,255,255,.66);
+      backdrop-filter: blur(18px);
+      color: var(--apple-muted);
+      font-size: 13px;
+      font-weight: 650;
+      letter-spacing: -.01em;
+    }
+
+    .pulse {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 0 6px color-mix(in srgb, var(--accent) 20%, transparent);
+    }
+
+    h1 {
+      margin: 16px 0 8px;
+      font-size: clamp(34px, 4.8vw, 68px);
+      line-height: .94;
+      letter-spacing: -.065em;
+      max-width: 860px;
+    }
+
+    .hero-copy {
+      margin: 0;
+      color: var(--apple-muted);
+      font-size: clamp(15px, 1.4vw, 18px);
+      max-width: 760px;
+      line-height: 1.5;
+    }
+
+    .hero-card {
+      width: 260px;
+      border-radius: 28px;
+      padding: 16px;
+      background: rgba(255,255,255,.64);
+      border: 1px solid var(--apple-border);
+      box-shadow: var(--shadow-soft);
+      backdrop-filter: blur(24px);
+    }
+
+    .hero-card strong { display: block; font-size: 15px; margin-bottom: 8px; }
+    .hero-card span { display: block; color: var(--apple-muted); font-size: 13px; line-height: 1.38; }
+
+    .workspace {
+      display: grid;
+      grid-template-columns: minmax(310px, 390px) 1fr;
+      gap: 22px;
+      align-items: start;
+    }
+
+    .panel {
+      position: sticky;
+      top: 20px;
+      border: 1px solid var(--apple-border);
+      border-radius: var(--radius-xl);
+      background: var(--apple-card);
+      backdrop-filter: blur(26px) saturate(1.25);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .panel-inner { padding: 20px; }
+    .panel h2, .preview-card h2 {
+      margin: 0 0 13px;
+      letter-spacing: -.035em;
+      font-size: 22px;
+    }
+
+    .section {
+      padding: 18px 0;
+      border-top: 1px solid var(--apple-border);
+    }
+    .section:first-of-type { border-top: 0; padding-top: 0; }
+
+    .label {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      align-items: center;
+      margin-bottom: 9px;
+      color: var(--apple-muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .segmented {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      padding: 6px;
+      border-radius: 18px;
+      background: rgba(0,0,0,.05);
+      border: 1px solid rgba(0,0,0,.05);
+    }
+
+    .segmented button, .device-switch button, .fit-row button {
+      border: 0;
+      border-radius: 14px;
+      padding: 11px 12px;
+      background: transparent;
+      color: var(--apple-muted);
+      font-weight: 750;
+      transition: transform .18s ease, background .18s ease, color .18s ease, box-shadow .18s ease;
+    }
+
+    .segmented button:hover, .device-switch button:hover, .fit-row button:hover { transform: translateY(-1px); }
+    .segmented button.active, .device-switch button.active, .fit-row button.active {
+      background: #fff;
+      color: var(--apple-text);
+      box-shadow: 0 8px 22px rgba(0,0,0,.09);
+    }
+
+    .field {
+      width: 100%;
+      min-height: 46px;
+      border: 1px solid var(--apple-border);
+      border-radius: 16px;
+      background: rgba(255,255,255,.72);
+      padding: 12px 14px;
+      outline: none;
+      color: var(--apple-text);
+      transition: box-shadow .18s ease, border .18s ease, background .18s ease;
+    }
+    .field:focus { box-shadow: var(--focus); border-color: rgba(0,122,255,.38); background: #fff; }
+
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+    .upload-card {
+      border: 1px solid var(--apple-border);
+      border-radius: 24px;
+      background: rgba(255,255,255,.58);
+      padding: 12px;
+      margin-top: 10px;
+    }
+
+    .dropzone {
+      display: grid;
+      grid-template-columns: 70px 1fr;
+      gap: 12px;
+      align-items: center;
+      min-height: 94px;
+      padding: 12px;
+      border: 1.5px dashed rgba(0,0,0,.13);
+      border-radius: 20px;
+      background: rgba(255,255,255,.55);
+      transition: border .18s ease, transform .18s ease, background .18s ease;
+    }
+    .dropzone:hover, .dropzone.dragover {
+      border-color: color-mix(in srgb, var(--accent) 70%, rgba(0,0,0,.18));
+      background: color-mix(in srgb, var(--accent) 9%, white);
+      transform: translateY(-1px);
+    }
+
+    .thumb {
+      width: 70px;
+      height: 70px;
+      overflow: hidden;
+      border-radius: 19px;
+      background:
+        linear-gradient(135deg, rgba(255,255,255,.8), rgba(255,255,255,.3)),
+        linear-gradient(135deg, var(--accent), var(--accent-2));
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,.65), 0 10px 22px rgba(0,0,0,.12);
+      display: grid;
+      place-items: center;
+      color: rgba(255,255,255,.92);
+      font-size: 28px;
+      font-weight: 900;
+    }
+
+    .thumb.banner { width: 70px; height: 48px; border-radius: 14px; }
+    .dropzone strong { display: block; font-size: 14px; margin-bottom: 3px; }
+    .dropzone span { display: block; font-size: 12px; line-height: 1.34; color: var(--apple-muted); }
+    .dropzone input { display: none; }
+
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 9px;
+      color: var(--apple-muted);
+      font-size: 12px;
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 6px 9px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.68);
+      border: 1px solid var(--apple-border);
+      font-weight: 650;
+    }
+
+    .fit-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-top: 10px;
+      padding: 5px;
+      border-radius: 16px;
+      background: rgba(0,0,0,.045);
+    }
+
+    .actions {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      padding: 16px 20px 20px;
+      background: rgba(255,255,255,.36);
+      border-top: 1px solid var(--apple-border);
+    }
+
+    .btn {
+      border: 0;
+      border-radius: 17px;
+      min-height: 46px;
+      padding: 12px 14px;
+      font-weight: 800;
+      color: #fff;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      box-shadow: 0 12px 24px color-mix(in srgb, var(--accent) 28%, transparent);
+      transition: transform .18s ease, filter .18s ease;
+    }
+    .btn:hover { transform: translateY(-1px); filter: saturate(1.08); }
+    .btn.secondary {
+      color: var(--apple-text);
+      background: rgba(255,255,255,.72);
+      box-shadow: inset 0 0 0 1px var(--apple-border);
+    }
+
+    .preview-card {
+      border: 1px solid var(--apple-border);
+      border-radius: var(--radius-xl);
+      background: rgba(255,255,255,.64);
+      backdrop-filter: blur(24px) saturate(1.18);
+      box-shadow: var(--shadow);
+      padding: 18px;
+      overflow: hidden;
+    }
+
+    .preview-head {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 14px;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+    .preview-head p { margin: 4px 0 0; color: var(--apple-muted); font-size: 14px; }
+
+    .device-switch {
+      display: inline-flex;
+      gap: 6px;
+      padding: 5px;
+      border-radius: 17px;
+      background: rgba(0,0,0,.05);
+      border: 1px solid rgba(0,0,0,.05);
+    }
+
+    .stage-wrap {
+      border-radius: 30px;
+      background: linear-gradient(135deg, rgba(255,255,255,.75), rgba(255,255,255,.34));
+      padding: 12px;
+      border: 1px solid rgba(255,255,255,.62);
+    }
+
+    .stage {
+      position: relative;
+      min-height: 720px;
+      border-radius: 24px;
+      overflow: hidden;
+      background: var(--platform-bg);
+      border: 1px solid rgba(0,0,0,.09);
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,.6);
+      transition: max-width .25s ease, min-height .25s ease;
+    }
+
+    .stage.mobile {
+      max-width: 430px;
+      min-height: 780px;
+      margin: 0 auto;
+      border-radius: 38px;
+    }
+
+    .screen { display: none; min-height: inherit; background: var(--platform-bg); color: var(--platform-text); }
+    [data-platform="yandex"] .screen.yandex-screen,
+    [data-platform="fb"] .screen.fb-screen,
+    [data-platform="appstore"] .screen.appstore-screen,
+    [data-platform="gplay"] .screen.gplay-screen { display: block; }
+
+    .asset-img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      background: linear-gradient(135deg, #e8e9ef, #ffffff);
+    }
+    .asset-img[src=""] { display: none; }
+
+    .placeholder-art {
+      width: 100%; height: 100%;
+      display: grid;
+      place-items: center;
+      padding: 18px;
+      text-align: center;
+      color: rgba(255,255,255,.92);
+      background:
+        radial-gradient(circle at 18% 18%, rgba(255,255,255,.68), transparent 24%),
+        linear-gradient(135deg, var(--accent), var(--accent-2));
+      font-weight: 900;
+      letter-spacing: -.04em;
+      text-shadow: 0 12px 28px rgba(0,0,0,.22);
+    }
+    .asset-img:not([src=""]) + .placeholder-art { display: none; }
+
+    /* Yandex-inspired screen */
+    .yg-topbar {
+      height: 72px;
+      display: grid;
+      grid-template-columns: auto minmax(220px, 1fr) auto;
+      align-items: center;
+      gap: 18px;
+      padding: 0 26px;
+      background: rgba(255,255,255,.92);
+      border-bottom: 1px solid var(--platform-line);
+      backdrop-filter: blur(18px);
+    }
+    .yg-brand, .fb-brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 900;
+      letter-spacing: -.04em;
+      white-space: nowrap;
+    }
+    .yg-logo {
+      width: 34px; height: 34px;
+      display: grid; place-items: center;
+      border-radius: 11px;
+      color: #111;
+      background: linear-gradient(135deg, #ffd900, #ffb700);
+      box-shadow: 0 10px 24px rgba(255,204,0,.35);
+    }
+    .yg-search, .fb-search {
+      height: 44px;
+      border-radius: 14px;
+      background: var(--platform-soft);
+      display: flex;
+      align-items: center;
+      padding: 0 14px;
+      color: var(--platform-muted);
+      font-size: 14px;
+      min-width: 0;
+    }
+    .yg-user {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 8px 12px; border-radius: 999px;
+      background: #f3f3f6;
+      color: var(--platform-muted);
+      font-size: 13px; font-weight: 700;
+    }
+
+    .yg-page { padding: 22px 26px 30px; }
+    .yg-pills { display: flex; gap: 9px; overflow: auto; padding-bottom: 16px; scrollbar-width: none; }
+    .yg-pills::-webkit-scrollbar { display:none; }
+    .pill {
+      flex: 0 0 auto;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: var(--platform-panel);
+      border: 1px solid var(--platform-line);
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--platform-text);
+    }
+    .pill.hot { background: #111; color: #fff; border-color: #111; }
+
+    .yg-layout {
+      display: grid;
+      grid-template-columns: 1fr 270px;
+      gap: 18px;
+      align-items: start;
+    }
+    .yg-hero {
+      min-height: 310px;
+      border-radius: 30px;
+      overflow: hidden;
+      position: relative;
+      background: #101014;
+      box-shadow: var(--shadow-soft);
+      isolation: isolate;
+    }
+    .yg-hero .asset-img, .yg-hero .placeholder-art { position: absolute; inset: 0; }
+    .yg-hero::after {
+      content: "";
+      position: absolute; inset: 0;
+      background: linear-gradient(90deg, rgba(0,0,0,.62), rgba(0,0,0,.12) 55%, rgba(0,0,0,.08));
+      z-index: 1;
+    }
+    .yg-hero-copy {
+      position: absolute;
+      z-index: 2;
+      left: 26px; bottom: 24px;
+      width: min(380px, calc(100% - 48px));
+      color: #fff;
+    }
+    .yg-hero-copy h3, .fb-hero-copy h3 { margin: 0 0 8px; font-size: 34px; letter-spacing: -.055em; line-height: .96; }
+    .yg-hero-copy p, .fb-hero-copy p { margin: 0 0 16px; opacity: .82; line-height: 1.35; }
+    .play-btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      border: 0;
+      padding: 12px 16px;
+      border-radius: 16px;
+      background: #fff;
+      color: #101014;
+      font-weight: 900;
+      box-shadow: 0 14px 34px rgba(0,0,0,.18);
+    }
+
+    .yg-side {
+      display: grid; gap: 12px;
+    }
+    .yg-side-card {
+      border-radius: 24px;
+      background: var(--platform-panel);
+      border: 1px solid var(--platform-line);
+      padding: 14px;
+      box-shadow: 0 10px 24px rgba(0,0,0,.045);
+    }
+    .side-banner {
+      height: 162px;
+      border-radius: 18px;
+      overflow: hidden;
+      background: #dadde5;
+      margin-bottom: 11px;
+      position: relative;
+    }
+    .yg-side-card strong { display: block; font-size: 15px; letter-spacing: -.025em; margin-bottom: 4px; }
+    .yg-side-card span { color: var(--platform-muted); font-size: 13px; }
+
+    .row-title { margin: 24px 0 13px; display: flex; align-items: end; justify-content: space-between; gap: 12px; }
+    .row-title h3 { margin: 0; font-size: 24px; letter-spacing: -.045em; }
+    .row-title span { color: var(--platform-muted); font-size: 13px; font-weight: 700; }
+
+    .yg-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
+    .yg-game-card {
+      min-width: 0;
+      overflow: hidden;
+      border-radius: 24px;
+      background: var(--platform-panel);
+      border: 1px solid var(--platform-line);
+      padding: 11px;
+      box-shadow: 0 10px 24px rgba(0,0,0,.045);
+    }
+    .yg-cover-mini {
+      height: 118px;
+      border-radius: 18px;
+      overflow: hidden;
+      position: relative;
+      background: #e1e3ea;
+      margin-bottom: 10px;
+    }
+    .game-line { display: grid; grid-template-columns: 42px minmax(0, 1fr); gap: 9px; align-items: center; min-width: 0; }
+    .game-line > div:last-child { min-width: 0; overflow: hidden; }
+    .mini-icon {
+      width: 42px; height: 42px;
+      border-radius: 12px;
+      overflow: hidden;
+      position: relative;
+      background: #e6e8ef;
+    }
+    .game-line strong {
+      display: block;
+      width: 100%;
+      max-width: 100%;
+      min-width: 0;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      font-size: 14px;
+      line-height: 1.22;
+    }
+    .game-line span {
+      display: block;
+      width: 100%;
+      max-width: 100%;
+      min-width: 0;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      color: var(--platform-muted);
+      font-size: 12px;
+      margin-top: 2px;
+      line-height: 1.25;
+    }
+
+    /* FB-inspired screen */
+    .fb-topbar {
+      height: 64px;
+      display: grid;
+      grid-template-columns: 290px 1fr auto;
+      gap: 14px;
+      align-items: center;
+      padding: 0 18px;
+      background: var(--platform-panel);
+      border-bottom: 1px solid var(--platform-line);
+      box-shadow: 0 3px 12px rgba(0,0,0,.05);
+    }
+    .fb-logo {
+      width: 38px; height: 38px;
+      display: grid; place-items: center;
+      border-radius: 50%;
+      color: #fff;
+      background: linear-gradient(135deg, #1877f2, #0f5ed6);
+      font-weight: 1000;
+      font-size: 22px;
+      box-shadow: 0 10px 24px rgba(24,119,242,.28);
+    }
+    .fb-nav { display: flex; justify-content: center; gap: 8px; }
+    .fb-nav span {
+      width: 64px; height: 42px;
+      display: grid; place-items: center;
+      border-radius: 12px;
+      color: var(--platform-muted);
+      font-weight: 900;
+      font-size: 18px;
+    }
+    .fb-nav .active { color: var(--accent); background: var(--platform-soft); }
+    .fb-profile { width: 38px; height: 38px; border-radius: 50%; background: linear-gradient(135deg, #d7dbe5, #fff); box-shadow: inset 0 0 0 1px rgba(0,0,0,.06); }
+    .fb-page {
+      display: grid;
+      grid-template-columns: 235px 1fr 250px;
+      gap: 18px;
+      padding: 18px;
+    }
+    .fb-rail, .fb-right { display: grid; gap: 10px; align-content: start; }
+    .fb-menu-item {
+      display: flex; align-items: center; gap: 10px;
+      height: 44px;
+      padding: 0 12px;
+      border-radius: 12px;
+      color: var(--platform-text);
+      font-weight: 750;
+      font-size: 14px;
+    }
+    .fb-menu-item.active, .fb-menu-item:hover { background: rgba(0,0,0,.05); }
+    .fb-dot {
+      width: 28px; height: 28px;
+      border-radius: 9px;
+      display: grid; place-items: center;
+      color: #fff;
+      background: linear-gradient(135deg, #1877f2, #00a6ff);
+      font-size: 14px;
+    }
+    .fb-main { min-width: 0; }
+    .fb-hero {
+      min-height: 340px;
+      border-radius: 22px;
+      background: #0b1220;
+      overflow: hidden;
+      position: relative;
+      isolation: isolate;
+      box-shadow: var(--shadow-soft);
+    }
+    .fb-hero .asset-img, .fb-hero .placeholder-art { position: absolute; inset: 0; }
+    .fb-hero::after {
+      content: "";
+      position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,.08), rgba(0,0,0,.75));
+      z-index: 1;
+    }
+    .fb-hero-copy {
+      position: absolute;
+      z-index: 2;
+      left: 24px; right: 24px; bottom: 22px;
+      display: grid;
+      grid-template-columns: 86px 1fr auto;
+      gap: 16px;
+      align-items: end;
+      color: #fff;
+    }
+    .fb-hero-icon {
+      width: 86px; height: 86px;
+      border-radius: 21px;
+      overflow: hidden;
+      position: relative;
+      background: #e4e7ee;
+      box-shadow: 0 14px 34px rgba(0,0,0,.24);
+    }
+    .fb-play { background: #1877f2; color: #fff; border: 0; box-shadow: none; }
+
+    .fb-feed-card {
+      margin-top: 14px;
+      border-radius: 18px;
+      background: var(--platform-panel);
+      border: 1px solid var(--platform-line);
+      box-shadow: 0 8px 20px rgba(0,0,0,.045);
+      overflow: hidden;
+    }
+    .fb-feed-head { display: grid; grid-template-columns: 48px 1fr auto; gap: 10px; align-items: center; padding: 12px; }
+    .fb-feed-head .mini-icon { width: 48px; height: 48px; border-radius: 14px; }
+    .fb-feed-head strong { display:block; font-size: 15px; }
+    .fb-feed-head span { color: var(--platform-muted); font-size: 13px; }
+    .fb-feed-banner { height: 250px; position: relative; overflow: hidden; background: #dfe2ea; }
+    .fb-feed-actions { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; padding: 10px; border-top: 1px solid var(--platform-line); }
+    .fb-feed-actions button { border:0; background: transparent; border-radius: 10px; padding: 10px; color: var(--platform-muted); font-weight: 800; }
+    .fb-feed-actions button:hover { background: rgba(0,0,0,.05); }
+
+    .fb-right-card {
+      border-radius: 18px;
+      background: var(--platform-panel);
+      border: 1px solid var(--platform-line);
+      padding: 12px;
+      box-shadow: 0 8px 20px rgba(0,0,0,.045);
+    }
+    .fb-right-card h4 { margin: 0 0 10px; font-size: 16px; letter-spacing: -.025em; }
+    .fb-small-row { display: grid; grid-template-columns: 48px minmax(0, 1fr); gap: 10px; align-items: center; padding: 8px 0; border-top: 1px solid var(--platform-line); min-width: 0; }
+    .fb-small-row:first-of-type { border-top: 0; padding-top: 0; }
+    .fb-small-row strong { display: block; width: 100%; max-width: 100%; min-width: 0; font-size: 13px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .fb-small-row span { display: block; width: 100%; max-width: 100%; min-width: 0; color: var(--platform-muted); font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+    /* App Store / Google Play inspired screens */
+    .store-topbar {
+      min-height: 70px;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      gap: 16px;
+      padding: 0 26px;
+      background: rgba(255,255,255,.88);
+      border-bottom: 1px solid var(--platform-line);
+      backdrop-filter: blur(18px);
+    }
+    .store-brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 900;
+      letter-spacing: -.04em;
+      white-space: nowrap;
+    }
+    .store-mark {
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      border-radius: 13px;
+      color: #fff;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      box-shadow: 0 12px 28px color-mix(in srgb, var(--accent) 24%, transparent);
+      font-weight: 1000;
+    }
+    .store-search {
+      height: 43px;
+      display: flex;
+      align-items: center;
+      padding: 0 14px;
+      border-radius: 15px;
+      color: var(--platform-muted);
+      background: var(--platform-soft);
+      font-size: 14px;
+      min-width: 0;
+    }
+    .store-avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #dde2ea, #fff);
+      box-shadow: inset 0 0 0 1px rgba(0,0,0,.07);
+    }
+    .store-page { padding: 26px; }
+
+    .as-product {
+      display: grid;
+      grid-template-columns: 132px 1fr auto;
+      gap: 18px;
+      align-items: center;
+      padding: 22px;
+      border-radius: 30px;
+      background: var(--platform-panel);
+      border: 1px solid var(--platform-line);
+      box-shadow: 0 12px 28px rgba(0,0,0,.055);
+    }
+    .as-icon {
+      width: 132px;
+      height: 132px;
+      border-radius: 30px;
+      overflow: hidden;
+      position: relative;
+      background: #e8eaf0;
+      box-shadow: inset 0 0 0 1px rgba(0,0,0,.06), 0 12px 26px rgba(0,0,0,.11);
+    }
+    .as-product h3, .gp-product h3 {
+      margin: 0 0 6px;
+      font-size: 34px;
+      letter-spacing: -.055em;
+      line-height: .96;
+    }
+    .as-subtitle, .gp-subtitle { color: var(--platform-muted); font-size: 15px; line-height: 1.35; }
+    .as-get {
+      border: 0;
+      border-radius: 999px;
+      padding: 10px 22px;
+      background: var(--platform-soft);
+      color: var(--accent);
+      font-weight: 950;
+      text-transform: uppercase;
+      letter-spacing: .02em;
+    }
+    .as-metrics {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+      margin: 18px 0;
+    }
+    .as-metric, .gp-stat {
+      min-height: 78px;
+      border-radius: 22px;
+      background: var(--platform-panel);
+      border: 1px solid var(--platform-line);
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding: 10px;
+    }
+    .as-metric strong, .gp-stat strong { display: block; font-size: 18px; letter-spacing: -.035em; }
+    .as-metric span, .gp-stat span { display: block; color: var(--platform-muted); font-size: 12px; margin-top: 3px; }
+    .as-shot-row, .gp-shot-row {
+      display: grid;
+      grid-template-columns: 1.3fr .74fr .74fr;
+      gap: 14px;
+      margin-top: 14px;
+    }
+    .as-shot, .gp-shot {
+      min-height: 350px;
+      border-radius: 30px;
+      background: #111;
+      overflow: hidden;
+      position: relative;
+      border: 1px solid var(--platform-line);
+      box-shadow: 0 14px 34px rgba(0,0,0,.10);
+    }
+    .as-shot.tall, .gp-shot.tall { min-height: 470px; }
+    .as-shot .asset-img, .as-shot .placeholder-art,
+    .gp-shot .asset-img, .gp-shot .placeholder-art { position: absolute; inset: 0; }
+    .as-shot::after, .gp-feature::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,.04), rgba(0,0,0,.48));
+      z-index: 1;
+      pointer-events: none;
+    }
+    .as-shot-caption {
+      position: absolute;
+      left: 18px;
+      right: 18px;
+      bottom: 18px;
+      color: #fff;
+      z-index: 2;
+      font-weight: 900;
+      font-size: 24px;
+      letter-spacing: -.045em;
+      text-shadow: 0 10px 24px rgba(0,0,0,.22);
+    }
+
+    .gp-tabs {
+      display: flex;
+      gap: 26px;
+      color: var(--platform-muted);
+      font-weight: 800;
+      font-size: 14px;
+      padding: 16px 26px 0;
+      background: var(--platform-panel);
+    }
+    .gp-tabs span { padding-bottom: 12px; }
+    .gp-tabs .active { color: var(--accent); border-bottom: 3px solid var(--accent); }
+    .gp-product {
+      display: grid;
+      grid-template-columns: 118px 1fr auto;
+      gap: 18px;
+      align-items: center;
+      padding: 4px 0 20px;
+      border-bottom: 1px solid var(--platform-line);
+    }
+    .gp-icon {
+      width: 118px;
+      height: 118px;
+      border-radius: 24px;
+      overflow: hidden;
+      position: relative;
+      background: #e8eaed;
+    }
+    .gp-install {
+      border: 0;
+      min-width: 132px;
+      border-radius: 999px;
+      padding: 13px 22px;
+      background: var(--accent);
+      color: #fff;
+      font-weight: 900;
+      box-shadow: 0 12px 26px color-mix(in srgb, var(--accent) 24%, transparent);
+    }
+    .gp-stats {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+      margin: 18px 0;
+    }
+    .gp-feature {
+      height: 310px;
+      border-radius: 28px;
+      overflow: hidden;
+      position: relative;
+      background: #101014;
+      border: 1px solid var(--platform-line);
+      box-shadow: 0 14px 34px rgba(0,0,0,.09);
+    }
+    .gp-feature .asset-img, .gp-feature .placeholder-art { position: absolute; inset: 0; }
+    .gp-feature-copy {
+      position: absolute;
+      z-index: 2;
+      left: 24px;
+      bottom: 22px;
+      color: #fff;
+      width: min(420px, calc(100% - 48px));
+    }
+    .gp-feature-copy h3 { margin: 0 0 8px; font-size: 34px; letter-spacing: -.055em; line-height: .96; }
+    .gp-feature-copy p { margin: 0; opacity: .82; line-height: 1.35; }
+    .gp-shot { min-height: 260px; border-radius: 24px; }
+    .gp-reco-row {
+      margin-top: 18px;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+    }
+    .gp-reco {
+      min-width: 0;
+      overflow: hidden;
+      border-radius: 22px;
+      background: var(--platform-panel);
+      border: 1px solid var(--platform-line);
+      padding: 12px;
+    }
+    .gp-reco strong { display: block; width: 100%; max-width: 100%; min-width: 0; font-size: 14px; margin-top: 9px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .gp-reco span { display: block; width: 100%; max-width: 100%; min-width: 0; color: var(--platform-muted); font-size: 12px; margin-top: 3px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+    .screenshot-scroll {
+      display: grid;
+      grid-auto-flow: column;
+      grid-auto-columns: minmax(210px, 285px);
+      gap: 14px;
+      overflow-x: auto;
+      padding: 2px 2px 12px;
+      scroll-snap-type: x proximity;
+      scrollbar-width: thin;
+    }
+    .screenshot-scroll > * { scroll-snap-align: start; }
+    .screenshot-scroll .as-shot,
+    .screenshot-scroll .gp-shot {
+      min-height: 390px;
+      width: 100%;
+    }
+    .env-link {
+      min-width: 0;
+      max-width: 100%;
+      overflow: hidden;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+    .env-link:hover { filter: saturate(1.04); }
+
+    .screenshot-count {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 30px;
+      height: 30px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: #fff;
+      font-weight: 950;
+      font-size: 12px;
+      box-shadow: 0 10px 22px color-mix(in srgb, var(--accent) 25%, transparent);
+    }
+
+    .safe-tag {
+      position: absolute;
+      right: 14px;
+      top: 14px;
+      z-index: 4;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: rgba(0,0,0,.46);
+      backdrop-filter: blur(14px);
+      color: rgba(255,255,255,.88);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .note {
+      margin: 12px 0 0;
+      padding: 12px 14px;
+      border-radius: 18px;
+      background: rgba(255,255,255,.58);
+      color: var(--apple-muted);
+      font-size: 13px;
+      line-height: 1.42;
+      border: 1px solid var(--apple-border);
+    }
+
+    .hidden { display: none !important; }
+
+    @media (max-width: 1120px) {
+      .workspace { grid-template-columns: 1fr; }
+      .panel { position: relative; top: auto; }
+      .top-hero { grid-template-columns: 1fr; }
+      .hero-card { width: 100%; }
+      .yg-layout { grid-template-columns: 1fr; }
+      .yg-side { grid-template-columns: 1fr 1fr; }
+      .fb-page { grid-template-columns: 1fr; }
+      .fb-rail, .fb-right { display: none; }
+      .fb-topbar { grid-template-columns: auto 1fr auto; }
+      .fb-search { display: none; }
+    }
+
+    @media (max-width: 720px) {
+      .app { width: min(100vw - 18px, 1500px); padding-top: 12px; }
+      h1 { font-size: 39px; }
+      .preview-head { grid-template-columns: 1fr; }
+      .grid-2 { grid-template-columns: 1fr; }
+      .actions { grid-template-columns: 1fr; }
+      .segmented { grid-template-columns: repeat(2, 1fr); }
+      .stage-wrap { padding: 6px; border-radius: 24px; }
+      .stage, .stage.mobile { border-radius: 22px; min-height: 720px; }
+      .yg-topbar { grid-template-columns: auto 1fr; padding: 0 14px; gap: 10px; }
+      .yg-user { display: none; }
+      .yg-page { padding: 14px; }
+      .yg-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
+      .yg-side { grid-template-columns: 1fr; }
+      .yg-hero { min-height: 270px; border-radius: 22px; }
+      .yg-hero-copy h3, .fb-hero-copy h3 { font-size: 27px; }
+      .fb-topbar { padding: 0 10px; }
+      .fb-nav span { width: 46px; }
+      .fb-page { padding: 10px; }
+      .fb-hero { min-height: 360px; border-radius: 20px; }
+      .fb-hero-copy { grid-template-columns: 70px 1fr; }
+      .fb-hero-icon { width: 70px; height: 70px; }
+      .fb-hero-copy .play-btn { grid-column: 1 / -1; justify-content: center; }
+      .fb-feed-banner { height: 210px; }
+      .store-topbar { grid-template-columns: auto 1fr; padding: 0 14px; }
+      .store-avatar { display: none; }
+      .store-page { padding: 14px; }
+      .as-product, .gp-product { grid-template-columns: 86px 1fr; padding: 16px; }
+      .gp-product { padding: 0 0 16px; }
+      .as-icon, .gp-icon { width: 86px; height: 86px; border-radius: 22px; }
+      .as-product h3, .gp-product h3 { font-size: 25px; }
+      .as-get, .gp-install { grid-column: 1 / -1; width: 100%; }
+      .as-metrics, .gp-stats { grid-template-columns: repeat(2, 1fr); }
+      .as-shot-row, .gp-shot-row { grid-template-columns: 1fr; }
+      .screenshot-scroll { grid-auto-columns: minmax(205px, 78vw); }
+      .as-shot, .as-shot.tall { min-height: 360px; }
+      .gp-feature { height: 270px; }
+      .gp-reco-row { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    .stage.mobile .yg-topbar { grid-template-columns: auto 1fr; padding: 0 14px; height: 64px; }
+    .stage.mobile .yg-user { display: none; }
+    .stage.mobile .yg-page { padding: 14px; }
+    .stage.mobile .yg-layout { grid-template-columns: 1fr; }
+    .stage.mobile .yg-side { grid-template-columns: 1fr; }
+    .stage.mobile .yg-grid { grid-template-columns: repeat(2, minmax(0,1fr)); gap: 10px; }
+    .stage.mobile .yg-hero { min-height: 300px; border-radius: 24px; }
+    .stage.mobile .yg-hero-copy h3 { font-size: 28px; }
+    .stage.mobile .yg-cover-mini { height: 94px; }
+    .stage.mobile .fb-topbar { grid-template-columns: auto 1fr auto; padding: 0 10px; height: 62px; }
+    .stage.mobile .fb-search { display: none; }
+    .stage.mobile .fb-nav { justify-content: center; }
+    .stage.mobile .fb-nav span { width: 42px; }
+    .stage.mobile .fb-page { grid-template-columns: 1fr; padding: 10px; }
+    .stage.mobile .fb-rail, .stage.mobile .fb-right { display: none; }
+    .stage.mobile .fb-hero { min-height: 380px; }
+    .stage.mobile .fb-hero-copy { grid-template-columns: 70px 1fr; }
+    .stage.mobile .fb-hero-icon { width: 70px; height: 70px; }
+    .stage.mobile .fb-hero-copy h3 { font-size: 27px; }
+    .stage.mobile .fb-hero-copy .play-btn { grid-column: 1 / -1; justify-content: center; }
+    .stage.mobile .store-topbar { grid-template-columns: auto 1fr; padding: 0 14px; }
+    .stage.mobile .store-avatar { display: none; }
+    .stage.mobile .store-page { padding: 14px; }
+    .stage.mobile .as-product, .stage.mobile .gp-product { grid-template-columns: 84px 1fr; padding: 16px; }
+    .stage.mobile .gp-product { padding: 0 0 16px; }
+    .stage.mobile .as-icon, .stage.mobile .gp-icon { width: 84px; height: 84px; border-radius: 21px; }
+    .stage.mobile .as-product h3, .stage.mobile .gp-product h3 { font-size: 25px; }
+    .stage.mobile .as-get, .stage.mobile .gp-install { grid-column: 1 / -1; width: 100%; }
+    .stage.mobile .as-metrics, .stage.mobile .gp-stats { grid-template-columns: repeat(2, 1fr); }
+    .stage.mobile .as-shot-row, .stage.mobile .gp-shot-row { grid-template-columns: 1fr; }
+    .stage.mobile .screenshot-scroll { grid-auto-columns: minmax(205px, 78vw); }
+    .stage.mobile .as-shot, .stage.mobile .as-shot.tall { min-height: 360px; }
+    .stage.mobile .gp-feature { height: 270px; }
+    .stage.mobile .gp-reco-row { grid-template-columns: repeat(2, 1fr); }
+  </style>
+</head>
+<body data-platform="yandex">
+  <main class="app">
+    <header class="top-hero">
+      <div>
+        <div class="eyebrow"><span class="pulse"></span>HTML5 Preview Lab · local only</div>
+        <h1>Проверка иконок и баннеров для игровых витрин.</h1>
+        <p class="hero-copy">Загрузи иконку и баннер, переключай визуальные режимы Yandex-like и FB-like, смотри как ассеты ведут себя в карточках, hero-блоках, ленте и мобильном виде.</p>
+      </div>
+      <aside class="hero-card">
+        <strong>Локальный предпросмотр</strong>
+<span>Твоя игра остаётся главной, а соседние карточки можно заполнить реальными играми и ссылками на сторы.</span>
+      </aside>
+    </header>
+
+    <section class="workspace">
+      <aside class="panel" aria-label="Настройки макета">
+        <div class="panel-inner">
+          <h2>Настройки</h2>
+
+          <div class="section">
+            <div class="label">Платформа <span id="platformHint">Yandex-like</span></div>
+            <div class="segmented" role="tablist" aria-label="Выбор платформы">
+              <button type="button" class="active" data-platform-tab="yandex">Yandex</button>
+              <button type="button" data-platform-tab="fb">FB</button>
+              <button type="button" data-platform-tab="appstore">App Store</button>
+              <button type="button" data-platform-tab="gplay">Google Play</button>
+            </div>
+          </div>
+
+          <div class="section">
+            <label class="label" for="gameTitle">Название игры</label>
+            <input id="gameTitle" class="field" maxlength="42" value="Cosmo Cats: Turbo Run" />
+            <div class="grid-2" style="margin-top: 10px;">
+              <div>
+                <label class="label" for="genre">Жанр</label>
+                <select id="genre" class="field">
+                  <option>Аркада</option>
+                  <option>Головоломка</option>
+                  <option>Экшен</option>
+                  <option>Казуальная</option>
+                  <option>Racing</option>
+                  <option>Strategy</option>
+                </select>
+              </div>
+              <div>
+                <label class="label" for="rating">Рейтинг</label>
+                <input id="rating" class="field" maxlength="8" value="4.8" />
+              </div>
+            </div>
+          </div>
+
+          <div class="section">
+            <div class="label">Иконка игры <span>square</span></div>
+            <label class="upload-card dropzone" data-drop="icon">
+<span class="thumb" id="iconThumb">+</span>
+              <span>
+                <strong>Загрузить иконку</strong>
+                <span>PNG/JPG/WebP. Хорошо проверять 512×512 и 1024×1024. Перетащи файл сюда или нажми.</span>
+              </span>
+              <input id="iconInput" type="file" accept="image/*" />
+            </label>
+            <div class="meta" id="iconMeta"><span class="chip">нажми на +</span><span class="chip">скругление имитируется макетом</span></div>
+            <div class="fit-row" data-fit="icon">
+              <button class="active" type="button" data-fit-value="cover">Cover</button>
+              <button type="button" data-fit-value="contain">Contain</button>
+            </div>
+          </div>
+
+          <div class="section">
+            <div class="label">Баннер / cover <span>wide</span></div>
+            <label class="upload-card dropzone" data-drop="banner">
+<span class="thumb banner" id="bannerThumb">+</span>
+              <span>
+                <strong>Загрузить баннер</strong>
+                <span>Для проверки широких мест: cover, hero, лента, боковой промо-блок.</span>
+              </span>
+              <input id="bannerInput" type="file" accept="image/*" />
+            </label>
+            <div class="meta" id="bannerMeta"><span class="chip">нажми на +</span><span class="chip">FB: 1200×627 / 1600×300</span><span class="chip">Yandex: cover в каталоге</span></div>
+            <div class="fit-row" data-fit="banner">
+              <button class="active" type="button" data-fit-value="cover">Cover</button>
+              <button type="button" data-fit-value="contain">Contain</button>
+            </div>
+          </div>
+
+          <div class="section">
+            <div class="label">Screenshots <span>до 10 шт.</span></div>
+            <label class="upload-card dropzone" data-drop="screenshots">
+<span class="thumb" id="screenshotsThumb"><span class="screenshot-count">+</span></span>
+              <span>
+                <strong>Загрузить скриншоты</strong>
+                <span>Можно выбрать сразу несколько PNG/JPG/WebP. Первые 10 попадут в App Store и Google Play галереи по порядку.</span>
+              </span>
+              <input id="screenshotsInput" type="file" accept="image/*" multiple />
+            </label>
+            <div class="meta" id="screenshotsMeta"><span class="chip">нажми на +</span><span class="chip">0 / 10 screenshots</span></div>
+            <div class="fit-row" data-fit="screenshot">
+              <button class="active" type="button" data-fit-value="cover">Cover</button>
+              <button type="button" data-fit-value="contain">Contain</button>
+            </div>
+          </div>
+
+          <p class="note">Подсказка: баннер/feature graphic и screenshots теперь загружаются отдельно. Cover покажет реальный кроп, Contain поможет заметить пустые поля и рамки.</p>
+        </div>
+
+        <div class="actions">
+          <button type="button" class="btn secondary" id="resetBtn">Сбросить</button>
+<button type="button" class="btn secondary" id="envBtn">Обновить игры</button>
+          <button type="button" class="btn" id="demoBtn">Демо-ассеты</button>
+        </div>
+      </aside>
+
+      <section class="preview-card">
+        <div class="preview-head">
+          <div>
+            <h2>Предпросмотр витрины</h2>
+            <p>Один и тот же набор ассетов отображается в двух стилизованных платформах.</p>
+          </div>
+          <div class="device-switch" aria-label="Размер предпросмотра">
+            <button type="button" class="active" data-device="desktop">Desktop</button>
+            <button type="button" data-device="mobile">Mobile</button>
+          </div>
+        </div>
+
+        <div class="stage-wrap">
+          <div class="stage" id="stage">
+            <section class="screen yandex-screen" aria-label="Yandex Games inspired preview">
+              <div class="yg-topbar">
+                <div class="yg-brand"><span class="yg-logo">Y</span><span>Games</span></div>
+                <div class="yg-search">Поиск игр, жанров и подборок</div>
+                <div class="yg-user">Профиль · 12 уровень</div>
+              </div>
+
+              <div class="yg-page">
+                <div class="yg-pills">
+                  <span class="pill hot">Главная</span>
+                  <span class="pill">Топ</span>
+                  <span class="pill">Новые</span>
+                  <span class="pill">Аркады</span>
+                  <span class="pill">Для телефона</span>
+                  <span class="pill">Бесплатно</span>
+                </div>
+
+                <div class="yg-layout">
+                  <div>
+                    <div class="yg-hero">
+                      <span class="safe-tag">banner / cover</span>
+                      <img class="asset-img" data-asset="banner" alt="Banner preview" src="" />
+                      <div class="placeholder-art">BANNER</div>
+                      <div class="yg-hero-copy">
+                        <h3 data-text="title">Cosmo Cats: Turbo Run</h3>
+                        <p><span data-text="genre">Аркада</span> · быстрый старт · подборка недели</p>
+                        <button class="play-btn" type="button">▶ Играть</button>
+                      </div>
+                    </div>
+
+                    <div class="row-title"><h3>Похоже на карточки каталога</h3><span>иконка + cover</span></div>
+                    <div class="yg-grid">
+                      <article class="yg-game-card">
+                        <div class="yg-cover-mini"><img class="asset-img" data-asset="banner" alt="cover" src="" /><div class="placeholder-art">COVER</div></div>
+                        <div class="game-line"><div class="mini-icon"><img class="asset-img" data-asset="icon" alt="icon" src="" /><div class="placeholder-art">★</div></div><div><strong data-text="title">Cosmo Cats: Turbo Run</strong><span><span data-text="genre">Аркада</span> · <span data-text="rating">4.8</span></span></div></div>
+                      </article>
+                      <article class="yg-game-card">
+                        <a class="env-link" data-env-link="0" href="#" aria-label="Открыть игру окружения">
+                          <div class="yg-cover-mini"><img class="asset-img" data-env-banner="0" alt="random cover" src="" /><div class="placeholder-art">ALT</div></div>
+                          <div class="game-line"><div class="mini-icon"><img class="asset-img" data-env-icon="0" alt="random icon" src="" /><div class="placeholder-art">2</div></div><div><strong data-env-title="0">Rocket Merge</strong><span><span data-env-genre="0">Пазл</span> · <span data-env-rating="0">4.7</span></span></div></div>
+                        </a>
+                      </article>
+                      <article class="yg-game-card">
+                        <a class="env-link" data-env-link="1" href="#" aria-label="Открыть игру окружения">
+                          <div class="yg-cover-mini"><img class="asset-img" data-env-banner="1" alt="random cover" src="" /><div class="placeholder-art">ALT</div></div>
+                          <div class="game-line"><div class="mini-icon"><img class="asset-img" data-env-icon="1" alt="random icon" src="" /><div class="placeholder-art">3</div></div><div><strong data-env-title="1">Island Dash</strong><span><span data-env-genre="1">Казуальная</span> · <span data-env-rating="1">4.6</span></span></div></div>
+                        </a>
+                      </article>
+                      <article class="yg-game-card">
+                        <a class="env-link" data-env-link="2" href="#" aria-label="Открыть игру окружения">
+                          <div class="yg-cover-mini"><img class="asset-img" data-env-banner="2" alt="random cover" src="" /><div class="placeholder-art">ALT</div></div>
+                          <div class="game-line"><div class="mini-icon"><img class="asset-img" data-env-icon="2" alt="random icon" src="" /><div class="placeholder-art">4</div></div><div><strong data-env-title="2">Neon Blocks</strong><span><span data-env-genre="2">Логика</span> · <span data-env-rating="2">4.9</span></span></div></div>
+                        </a>
+                      </article>
+                    </div>
+                  </div>
+
+                  <aside class="yg-side">
+                    <div class="yg-side-card">
+                      <div class="side-banner"><img class="asset-img" data-asset="banner" alt="side banner" src="" /><div class="placeholder-art">PROMO</div></div>
+                      <strong data-text="title">Cosmo Cats: Turbo Run</strong>
+                      <span>Баннер в узком промо-слоте: проверь главный объект и текст.</span>
+                    </div>
+                    <div class="yg-side-card">
+                      <div class="game-line"><div class="mini-icon"><img class="asset-img" data-asset="icon" alt="icon" src="" /><div class="placeholder-art">★</div></div><div><strong>Иконка рядом с названием</strong><span>проверка мелкого размера</span></div></div>
+                    </div>
+                  </aside>
+                </div>
+              </div>
+            </section>
+
+            <section class="screen fb-screen" aria-label="Facebook Games inspired preview">
+              <div class="fb-topbar">
+                <div class="fb-brand"><span class="fb-logo">f</span><div class="fb-search">Search Facebook Gaming</div></div>
+                <nav class="fb-nav" aria-label="FB navigation"><span>⌂</span><span class="active">🎮</span><span>▶</span><span>☰</span></nav>
+                <div class="fb-profile"></div>
+              </div>
+
+              <div class="fb-page">
+                <aside class="fb-rail">
+                  <div class="fb-menu-item active"><span class="fb-dot">🎮</span> Play Games</div>
+                  <div class="fb-menu-item"><span class="fb-dot">⭐</span> Favorites</div>
+                  <div class="fb-menu-item"><span class="fb-dot">👥</span> Friends playing</div>
+                  <div class="fb-menu-item"><span class="fb-dot">🕹</span> Instant Games</div>
+                </aside>
+
+                <main class="fb-main">
+                  <div class="fb-hero">
+                    <span class="safe-tag">banner image</span>
+                    <img class="asset-img" data-asset="banner" alt="FB hero banner" src="" />
+                    <div class="placeholder-art">BANNER</div>
+                    <div class="fb-hero-copy">
+                      <div class="fb-hero-icon"><img class="asset-img" data-asset="icon" alt="FB app icon" src="" /><div class="placeholder-art">★</div></div>
+                      <div>
+                        <h3 data-text="title">Cosmo Cats: Turbo Run</h3>
+                        <p><span data-text="genre">Аркада</span> · Play with friends · <span data-text="rating">4.8</span> rating</p>
+                      </div>
+                      <button class="play-btn fb-play" type="button">Play now</button>
+                    </div>
+                  </div>
+
+                  <article class="fb-feed-card">
+                    <div class="fb-feed-head">
+                      <div class="mini-icon"><img class="asset-img" data-asset="icon" alt="feed icon" src="" /><div class="placeholder-art">★</div></div>
+                      <div><strong data-text="title">Cosmo Cats: Turbo Run</strong><span>Sponsored game preview · Friends are playing</span></div>
+                      <span style="color: var(--platform-muted); font-weight:900;">•••</span>
+                    </div>
+                    <div class="fb-feed-banner"><img class="asset-img" data-asset="banner" alt="feed banner" src="" /><div class="placeholder-art">BANNER</div></div>
+                    <div class="fb-feed-actions"><button type="button">Like</button><button type="button">Comment</button><button type="button">Share</button></div>
+                  </article>
+                </main>
+
+                <aside class="fb-right">
+                  <div class="fb-right-card">
+                    <h4>Suggested games</h4>
+                    <div class="fb-small-row"><div class="mini-icon"><img class="asset-img" data-asset="icon" alt="small icon" src="" /><div class="placeholder-art">★</div></div><div><strong data-text="title">Cosmo Cats: Turbo Run</strong><span>App icon crop</span></div></div>
+                    <a class="env-link fb-small-row" data-env-link="3" href="#"><div class="mini-icon"><img class="asset-img" data-env-icon="3" alt="random icon" src="" /><div class="placeholder-art">R</div></div><div><strong data-env-title="3">Rune Park</strong><span data-env-genre="3">Puzzle</span></div></a>
+                    <a class="env-link fb-small-row" data-env-link="4" href="#"><div class="mini-icon"><img class="asset-img" data-env-icon="4" alt="random icon" src="" /><div class="placeholder-art">M</div></div><div><strong data-env-title="4">Mystic Chef</strong><span data-env-genre="4">Casual</span></div></a>
+                  </div>
+                  <div class="fb-right-card">
+                    <h4>Cover crop check</h4>
+                    <div class="side-banner"><img class="asset-img" data-asset="banner" alt="right banner" src="" /><div class="placeholder-art">COVER</div></div>
+                    <span style="color: var(--platform-muted); font-size:13px;">Узкий слот часто режет края баннера.</span>
+                  </div>
+                </aside>
+              </div>
+            </section>
+
+            <section class="screen appstore-screen" aria-label="App Store inspired preview">
+              <div class="store-topbar">
+                <div class="store-brand"><span class="store-mark">A</span><span>App Store</span></div>
+                <div class="store-search">Search apps, games, stories</div>
+                <div class="store-avatar"></div>
+              </div>
+
+              <div class="store-page">
+                <div class="as-product">
+                  <div class="as-icon"><img class="asset-img" data-asset="icon" alt="App Store icon" src="" /><div class="placeholder-art">★</div></div>
+                  <div>
+                    <h3 data-text="title">Cosmo Cats: Turbo Run</h3>
+                    <div class="as-subtitle"><span data-text="genre">Аркада</span> · fast arcade game · in-app events preview</div>
+                  </div>
+                  <button class="as-get" type="button">Get</button>
+                </div>
+
+                <div class="as-metrics">
+                  <div class="as-metric"><div><strong><span data-text="rating">4.8</span> ★</strong><span>Rating</span></div></div>
+                  <div class="as-metric"><div><strong>Age 4+</strong><span>Age</span></div></div>
+                  <div class="as-metric"><div><strong>#12</strong><span>Games</span></div></div>
+                  <div class="as-metric"><div><strong>Free</strong><span>Price</span></div></div>
+                </div>
+
+                <div class="row-title"><h3>Product page screenshots</h3><span>до 10 разных изображений</span></div>
+                <div class="screenshot-scroll" aria-label="App Store screenshots gallery">
+                  <div class="as-shot"><span class="safe-tag">screenshot 1</span><img class="asset-img" data-screenshot="0" alt="App Store screenshot 1" src="" /><div class="placeholder-art">S1</div><div class="as-shot-caption">Screenshot 1</div></div>
+                  <div class="as-shot"><img class="asset-img" data-screenshot="1" alt="App Store screenshot 2" src="" /><div class="placeholder-art">S2</div><div class="as-shot-caption">Screenshot 2</div></div>
+                  <div class="as-shot"><img class="asset-img" data-screenshot="2" alt="App Store screenshot 3" src="" /><div class="placeholder-art">S3</div><div class="as-shot-caption">Screenshot 3</div></div>
+                  <div class="as-shot"><img class="asset-img" data-screenshot="3" alt="App Store screenshot 4" src="" /><div class="placeholder-art">S4</div><div class="as-shot-caption">Screenshot 4</div></div>
+                  <div class="as-shot"><img class="asset-img" data-screenshot="4" alt="App Store screenshot 5" src="" /><div class="placeholder-art">S5</div><div class="as-shot-caption">Screenshot 5</div></div>
+                  <div class="as-shot"><img class="asset-img" data-screenshot="5" alt="App Store screenshot 6" src="" /><div class="placeholder-art">S6</div><div class="as-shot-caption">Screenshot 6</div></div>
+                  <div class="as-shot"><img class="asset-img" data-screenshot="6" alt="App Store screenshot 7" src="" /><div class="placeholder-art">S7</div><div class="as-shot-caption">Screenshot 7</div></div>
+                  <div class="as-shot"><img class="asset-img" data-screenshot="7" alt="App Store screenshot 8" src="" /><div class="placeholder-art">S8</div><div class="as-shot-caption">Screenshot 8</div></div>
+                  <div class="as-shot"><img class="asset-img" data-screenshot="8" alt="App Store screenshot 9" src="" /><div class="placeholder-art">S9</div><div class="as-shot-caption">Screenshot 9</div></div>
+                  <div class="as-shot"><img class="asset-img" data-screenshot="9" alt="App Store screenshot 10" src="" /><div class="placeholder-art">S10</div><div class="as-shot-caption">Screenshot 10</div></div>
+                </div>
+              </div>
+            </section>
+
+            <section class="screen gplay-screen" aria-label="Google Play inspired preview">
+              <div class="store-topbar">
+                <div class="store-brand"><span class="store-mark">▶</span><span>Google Play</span></div>
+                <div class="store-search">Search for apps & games</div>
+                <div class="store-avatar"></div>
+              </div>
+              <div class="gp-tabs"><span class="active">Games</span><span>Apps</span><span>Offers</span><span>Kids</span></div>
+
+              <div class="store-page">
+                <div class="gp-product">
+                  <div class="gp-icon"><img class="asset-img" data-asset="icon" alt="Google Play icon" src="" /><div class="placeholder-art">★</div></div>
+                  <div>
+                    <h3 data-text="title">Cosmo Cats: Turbo Run</h3>
+                    <div class="gp-subtitle"><span data-text="genre">Аркада</span> · Zareef Gaming · Contains ads</div>
+                  </div>
+                  <button class="gp-install" type="button">Install</button>
+                </div>
+
+                <div class="gp-stats">
+                  <div class="gp-stat"><div><strong><span data-text="rating">4.8</span> ★</strong><span>Reviews</span></div></div>
+                  <div class="gp-stat"><div><strong>1M+</strong><span>Downloads</span></div></div>
+                  <div class="gp-stat"><div><strong>Everyone</strong><span>Rating</span></div></div>
+                  <div class="gp-stat"><div><strong>Arcade</strong><span>Category</span></div></div>
+                </div>
+
+                <div class="gp-feature"><span class="safe-tag">feature graphic</span><img class="asset-img" data-asset="banner" alt="Google Play feature graphic" src="" /><div class="placeholder-art">FEATURE GRAPHIC</div><div class="gp-feature-copy"><h3 data-text="title">Cosmo Cats: Turbo Run</h3><p>Проверка широкого промо-изображения и читаемости центра композиции.</p></div></div>
+
+                <div class="row-title"><h3>Screenshots</h3><span>отдельно от feature graphic</span></div>
+                <div class="screenshot-scroll" aria-label="Google Play screenshots gallery">
+                  <div class="gp-shot"><span class="safe-tag">screenshot 1</span><img class="asset-img" data-screenshot="0" alt="Google Play screenshot 1" src="" /><div class="placeholder-art">S1</div></div>
+                  <div class="gp-shot"><img class="asset-img" data-screenshot="1" alt="Google Play screenshot 2" src="" /><div class="placeholder-art">S2</div></div>
+                  <div class="gp-shot"><img class="asset-img" data-screenshot="2" alt="Google Play screenshot 3" src="" /><div class="placeholder-art">S3</div></div>
+                  <div class="gp-shot"><img class="asset-img" data-screenshot="3" alt="Google Play screenshot 4" src="" /><div class="placeholder-art">S4</div></div>
+                  <div class="gp-shot"><img class="asset-img" data-screenshot="4" alt="Google Play screenshot 5" src="" /><div class="placeholder-art">S5</div></div>
+                  <div class="gp-shot"><img class="asset-img" data-screenshot="5" alt="Google Play screenshot 6" src="" /><div class="placeholder-art">S6</div></div>
+                  <div class="gp-shot"><img class="asset-img" data-screenshot="6" alt="Google Play screenshot 7" src="" /><div class="placeholder-art">S7</div></div>
+                  <div class="gp-shot"><img class="asset-img" data-screenshot="7" alt="Google Play screenshot 8" src="" /><div class="placeholder-art">S8</div></div>
+                  <div class="gp-shot"><img class="asset-img" data-screenshot="8" alt="Google Play screenshot 9" src="" /><div class="placeholder-art">S9</div></div>
+                  <div class="gp-shot"><img class="asset-img" data-screenshot="9" alt="Google Play screenshot 10" src="" /><div class="placeholder-art">S10</div></div>
+                </div>
+
+                <div class="gp-reco-row">
+                  <article class="gp-reco"><div class="mini-icon"><img class="asset-img" data-asset="icon" alt="small icon" src="" /><div class="placeholder-art">★</div></div><strong data-text="title">Cosmo Cats: Turbo Run</strong><span><span data-text="rating">4.8</span> ★ · <span data-text="genre">Аркада</span></span></article>
+                  <article class="gp-reco"><a class="env-link" data-env-link="5" href="#"><div class="mini-icon"><img class="asset-img" data-env-icon="5" alt="random icon" src="" /><div class="placeholder-art">R</div></div><strong data-env-title="5">Rocket Merge</strong><span><span data-env-rating="5">4.7</span> ★ · <span data-env-genre="5">Puzzle</span></span></a></article>
+                  <article class="gp-reco"><a class="env-link" data-env-link="6" href="#"><div class="mini-icon"><img class="asset-img" data-env-icon="6" alt="random icon" src="" /><div class="placeholder-art">I</div></div><strong data-env-title="6">Island Dash</strong><span><span data-env-rating="6">4.6</span> ★ · <span data-env-genre="6">Casual</span></span></a></article>
+                  <article class="gp-reco"><a class="env-link" data-env-link="7" href="#"><div class="mini-icon"><img class="asset-img" data-env-icon="7" alt="random icon" src="" /><div class="placeholder-art">N</div></div><strong data-env-title="7">Neon Blocks</strong><span><span data-env-rating="7">4.9</span> ★ · <span data-env-genre="7">Logic</span></span></a></article>
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <script>
+    const state = {
+      platform: 'yandex',
+      device: 'desktop',
+      title: 'Cosmo Cats: Turbo Run',
+      genre: 'Аркада',
+      rating: '4.8',
+      icon: '',
+      banner: '',
+      screenshots: [],
+      envGames: [],
+      iconFit: 'cover',
+      bannerFit: 'cover',
+      screenshotFit: 'cover'
+    };
+
+    const $ = (selector, root = document) => root.querySelector(selector);
+    const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
+
+    const body = document.body;
+    const stage = $('#stage');
+    const platformHint = $('#platformHint');
+    const titleInput = $('#gameTitle');
+    const genreInput = $('#genre');
+    const ratingInput = $('#rating');
+    const iconInput = $('#iconInput');
+    const bannerInput = $('#bannerInput');
+    const screenshotsInput = $('#screenshotsInput');
+    const iconMeta = $('#iconMeta');
+    const bannerMeta = $('#bannerMeta');
+    const screenshotsMeta = $('#screenshotsMeta');
+
+    function updateText() {
+      state.title = titleInput.value.trim() || 'Untitled Game';
+      state.genre = genreInput.value.trim() || 'Game';
+      state.rating = ratingInput.value.trim() || '4.8';
+      $$('[data-text="title"]').forEach(el => el.textContent = state.title);
+      $$('[data-text="genre"]').forEach(el => el.textContent = state.genre);
+      $$('[data-text="rating"]').forEach(el => el.textContent = state.rating);
+    }
+
+    function updateAssets() {
+      $$('[data-asset="icon"]').forEach(img => {
+        img.src = state.icon;
+        img.style.objectFit = state.iconFit;
+      });
+      $$('[data-asset="banner"]').forEach(img => {
+        img.src = state.banner;
+        img.style.objectFit = state.bannerFit;
+      });
+
+      const iconThumb = $('#iconThumb');
+      const bannerThumb = $('#bannerThumb');
+      iconThumb.style.backgroundImage = state.icon ? `url(${state.icon})` : '';
+      iconThumb.style.backgroundSize = state.iconFit;
+      iconThumb.style.backgroundPosition = 'center';
+iconThumb.textContent = state.icon ? '' : '+';
+
+      bannerThumb.style.backgroundImage = state.banner ? `url(${state.banner})` : '';
+      bannerThumb.style.backgroundSize = state.bannerFit;
+      bannerThumb.style.backgroundPosition = 'center';
+bannerThumb.textContent = state.banner ? '' : '+';
+
+      updateScreenshots();
+    }
+
+    function updateEnvironment() {
+      $$('[data-env-icon]').forEach(img => {
+        const game = state.envGames[Number(img.dataset.envIcon)];
+        img.src = game ? game.icon : '';
+        img.style.objectFit = 'cover';
+      });
+      $$('[data-env-banner]').forEach(img => {
+        const game = state.envGames[Number(img.dataset.envBanner)];
+        img.src = game ? game.banner : '';
+        img.style.objectFit = 'cover';
+      });
+      $$('[data-env-title]').forEach(el => {
+        const game = state.envGames[Number(el.dataset.envTitle)];
+        if (game) el.textContent = game.title;
+      });
+      $$('[data-env-genre]').forEach(el => {
+        const game = state.envGames[Number(el.dataset.envGenre)];
+        if (game) el.textContent = game.genre;
+      });
+      $$('[data-env-rating]').forEach(el => {
+        const game = state.envGames[Number(el.dataset.envRating)];
+        if (game) el.textContent = game.rating;
+      });
+      $$('[data-env-link]').forEach(link => {
+        const game = state.envGames[Number(link.dataset.envLink)];
+        if (game) {
+link.href = state.platform === 'gplay' && game.playUrl ? game.playUrl : game.url;
+          link.title = game.title + ' · official store link';
+          link.target = '_blank';
+          link.rel = 'noopener noreferrer';
+        }
+      });
+    }
+
+    function updateScreenshots() {
+      $$('[data-screenshot]').forEach(img => {
+        const index = Number(img.dataset.screenshot);
+        img.src = state.screenshots[index] || '';
+        img.style.objectFit = state.screenshotFit;
+      });
+
+      const screenshotsThumb = $('#screenshotsThumb');
+      if (!screenshotsThumb) return;
+      if (state.screenshots.length) {
+        screenshotsThumb.style.backgroundImage = `url(${state.screenshots[0]})`;
+        screenshotsThumb.style.backgroundSize = state.screenshotFit;
+        screenshotsThumb.style.backgroundPosition = 'center';
+        screenshotsThumb.innerHTML = `<span class="screenshot-count">${state.screenshots.length}</span>`;
+      } else {
+        screenshotsThumb.style.backgroundImage = '';
+screenshotsThumb.innerHTML = '<span class="screenshot-count">+</span>'; 
+      }
+    }
+
+    function setPlatform(platform) {
+      state.platform = platform;
+body.dataset.platform = platform;
+      const platformNames = {
+        yandex: 'Yandex-like',
+        fb: 'FB-like',
+        appstore: 'App Store-like',
+        gplay: 'Google Play-like'
+      };
+      platformHint.textContent = platformNames[platform] || 'Preview';
+      $$('[data-platform-tab]').forEach(btn => btn.classList.toggle('active', btn.dataset.platformTab === platform));
+      updateEnvironment();
+    }
+
+    function setDevice(device) {
+      state.device = device;
+      stage.classList.toggle('mobile', device === 'mobile');
+      $$('[data-device]').forEach(btn => btn.classList.toggle('active', btn.dataset.device === device));
+    }
+
+    function setFit(type, fit) {
+      state[type + 'Fit'] = fit;
+      $$(`[data-fit="${type}"] button`).forEach(btn => btn.classList.toggle('active', btn.dataset.fitValue === fit));
+      updateAssets();
+    }
+
+    function fileToDataUrl(file, type) {
+      if (!file || !file.type.startsWith('image/')) return;
+      const reader = new FileReader();
+      reader.onload = () => {
+        const dataUrl = reader.result;
+        const probe = new Image();
+        probe.onload = () => {
+          state[type] = dataUrl;
+          const ratio = (probe.width / probe.height).toFixed(2);
+          const meta = type === 'icon' ? iconMeta : bannerMeta;
+          const label = type === 'icon' ? 'иконка' : 'баннер';
+          meta.innerHTML = `
+            <span class="chip">${label}: ${probe.width} × ${probe.height}</span>
+            <span class="chip">ratio ${ratio}:1</span>
+            <span class="chip">${Math.round(file.size / 1024)} KB</span>
+          `;
+          updateAssets();
+        };
+        probe.src = dataUrl;
+      };
+      reader.readAsDataURL(file);
+    }
+
+    function attachDropzone(type, input) {
+      const zone = $(`[data-drop="${type}"]`);
+      zone.addEventListener('dragover', event => {
+        event.preventDefault();
+        zone.classList.add('dragover');
+      });
+      zone.addEventListener('dragleave', () => zone.classList.remove('dragover'));
+      zone.addEventListener('drop', event => {
+        event.preventDefault();
+        zone.classList.remove('dragover');
+        const file = event.dataTransfer.files && event.dataTransfer.files[0];
+        fileToDataUrl(file, type);
+      });
+      input.addEventListener('change', event => fileToDataUrl(event.target.files[0], type));
+    }
+
+    function filesToScreenshots(fileList) {
+      const files = [...fileList].filter(file => file.type.startsWith('image/')).slice(0, 10);
+      if (!files.length) return;
+
+      const readers = files.map(file => new Promise(resolve => {
+        const reader = new FileReader();
+        reader.onload = () => {
+          const dataUrl = reader.result;
+          const probe = new Image();
+          probe.onload = () => resolve({
+            dataUrl,
+            width: probe.width,
+            height: probe.height,
+            size: file.size
+          });
+          probe.onerror = () => resolve(null);
+          probe.src = dataUrl;
+        };
+        reader.onerror = () => resolve(null);
+        reader.readAsDataURL(file);
+      }));
+
+      Promise.all(readers).then(items => {
+        const validItems = items.filter(Boolean);
+        state.screenshots = validItems.map(item => item.dataUrl);
+        const first = validItems[0];
+        const last = validItems[validItems.length - 1];
+        screenshotsMeta.innerHTML = `
+          <span class="chip">${validItems.length} / 10 screenshots</span>
+          ${first ? `<span class="chip">first: ${first.width} × ${first.height}</span>` : ''}
+          ${last && last !== first ? `<span class="chip">last: ${last.width} × ${last.height}</span>` : ''}
+        `;
+        updateAssets();
+      });
+    }
+
+    function attachScreenshotsDropzone() {
+      const zone = $('[data-drop="screenshots"]');
+      zone.addEventListener('dragover', event => {
+        event.preventDefault();
+        zone.classList.add('dragover');
+      });
+      zone.addEventListener('dragleave', () => zone.classList.remove('dragover'));
+      zone.addEventListener('drop', event => {
+        event.preventDefault();
+        zone.classList.remove('dragover');
+        filesToScreenshots(event.dataTransfer.files || []);
+      });
+      screenshotsInput.addEventListener('change', event => filesToScreenshots(event.target.files || []));
+    }
+
+    function makeDemoSvg(kind) {
+      const isIcon = kind === 'icon';
+      const w = isIcon ? 1024 : 1600;
+      const h = isIcon ? 1024 : 840;
+      const title = isIcon ? 'CAT' : 'COSMO CATS';
+      const sub = isIcon ? 'RUN' : 'Turbo Run · neon arcade';
+      const svg = `
+        <svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}">
+          <defs>
+            <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#7c3cff"/>
+              <stop offset=".45" stop-color="#00c2ff"/>
+              <stop offset="1" stop-color="#ffcc00"/>
+            </linearGradient>
+            <radialGradient id="r" cx="25%" cy="20%" r="80%">
+              <stop offset="0" stop-color="#ffffff" stop-opacity=".85"/>
+              <stop offset=".34" stop-color="#ffffff" stop-opacity=".08"/>
+              <stop offset="1" stop-color="#000000" stop-opacity=".28"/>
+            </radialGradient>
+            <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="28" stdDeviation="24" flood-color="#000" flood-opacity=".28"/></filter>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#g)"/>
+          <rect width="100%" height="100%" fill="url(#r)"/>
+          <g opacity=".28" fill="none" stroke="#fff" stroke-width="6">
+            <path d="M${w*.08} ${h*.22} C ${w*.35} ${h*.05}, ${w*.55} ${h*.55}, ${w*.92} ${h*.18}"/>
+            <path d="M${w*.02} ${h*.72} C ${w*.25} ${h*.42}, ${w*.62} ${h*.98}, ${w*.98} ${h*.62}"/>
+          </g>
+          <circle cx="${w*.74}" cy="${h*.26}" r="${Math.min(w,h)*.12}" fill="#fff" opacity=".16"/>
+          <g filter="url(#shadow)" transform="translate(${w*.12} ${h*.17})">
+            <path d="M ${w*.16} ${h*.16} L ${w*.25} ${h*.02} L ${w*.32} ${h*.17} C ${w*.45} ${h*.21} ${w*.5} ${h*.35} ${w*.48} ${h*.47} C ${w*.45} ${h*.68} ${w*.22} ${h*.77} ${w*.08} ${h*.62} C ${-w*.04} ${h*.48} ${w*.01} ${h*.24} ${w*.16} ${h*.16} Z" fill="#111827" opacity=".92"/>
+            <circle cx="${w*.17}" cy="${h*.37}" r="${Math.min(w,h)*.035}" fill="#ffcc00"/>
+            <circle cx="${w*.34}" cy="${h*.37}" r="${Math.min(w,h)*.035}" fill="#ffcc00"/>
+          </g>
+          <text x="${isIcon ? w*.5 : w*.08}" y="${isIcon ? h*.78 : h*.68}" text-anchor="${isIcon ? 'middle' : 'start'}" font-family="Arial Black, Arial, sans-serif" font-size="${isIcon ? 150 : 138}" font-weight="900" letter-spacing="-8" fill="#fff">${title}</text>
+          <text x="${isIcon ? w*.5 : w*.085}" y="${isIcon ? h*.88 : h*.78}" text-anchor="${isIcon ? 'middle' : 'start'}" font-family="Arial, sans-serif" font-size="${isIcon ? 64 : 52}" font-weight="800" fill="#fff" opacity=".86">${sub}</text>
+        </svg>`;
+      return 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg);
+    }
+
+    const REAL_GAMES = [
+      { title: 'Royal Match', appStoreId: '1482155847', playId: 'com.dreamgames.royalmatch', genre: 'Puzzle' },
+      { title: 'Gossip Harbor', appStoreId: '1623318294', playId: 'com.mergegames.gossipharbor', genre: 'Puzzle' },
+      { title: 'Candy Crush Saga', appStoreId: '553834731', playId: 'com.king.candycrushsaga', genre: 'Puzzle' },
+      { title: 'Gardenscapes', appStoreId: '1105855019', playId: 'com.playrix.gardenscapes', genre: 'Puzzle' },
+      { title: 'Homescapes', appStoreId: '1195621598', playId: 'com.playrix.homescapes', genre: 'Puzzle' },
+      { title: 'Township', appStoreId: '638689075', playId: 'com.playrix.township', genre: 'Simulation' },
+      { title: 'Toon Blast', appStoreId: '1176027022', playId: 'net.peakgames.toonblast', genre: 'Puzzle' },
+      { title: 'Coin Master', appStoreId: '406889139', playId: 'com.moonactive.coinmaster', genre: 'Adventure' },
+      { title: 'Merge Mansion', appStoreId: '1484442152', playId: 'com.everywear.game5', genre: 'Puzzle' },
+      { title: 'Travel Town', appStoreId: '1521236603', playId: 'io.randomco.travel', genre: 'Puzzle' },
+      { title: 'Match Factory', appStoreId: '6449702511', playId: 'com.peakgames.match', genre: 'Puzzle' },
+      { title: 'Fishdom', appStoreId: '664575829', playId: 'com.playrix.fishdomdd.gplay', genre: 'Puzzle' }
+    ];
+    const ENV_TITLES = REAL_GAMES.map(game => game.title).concat([
+      'Rocket Merge', 'Island Dash', 'Neon Blocks', 'Rune Park', 'Mystic Chef',
+      'Pixel Pirates', 'Dragon Bubbles', 'Turbo Farm', 'Candy Orbit', 'Monster Loop',
+      'Space Sushi', 'Jungle Wheels', 'Puzzle Panda', 'Sky Miner', 'Bubble Quest',
+      'Tiny Kingdom', 'Moon Runner', 'Idle Castle', 'Zombie Bakery', 'Ocean Match'
+    ]);
+    const ENV_GENRES = ['Arcade', 'Puzzle', 'Casual', 'Action', 'Racing', 'Strategy', 'Runner', 'Merge', 'Idle', 'Adventure', 'Simulation'];
+
+    function shuffleCopy(items) {
+      const copy = [...items];
+      for (let i = copy.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [copy[i], copy[j]] = [copy[j], copy[i]];
+      }
+      return copy;
+    }
+
+    function makeEnvironmentSvg(kind, index, title, genre) {
+      const isIcon = kind === 'icon';
+      const w = isIcon ? 768 : 1280;
+      const h = isIcon ? 768 : 720;
+      const hue = (index * 41 + title.length * 9) % 360;
+      const letter = title.trim().charAt(0).toUpperCase();
+      const shortTitle = title.length > 15 ? title.slice(0, 15) : title;
+      const svg = `
+        <svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}">
+          <defs>
+            <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="hsl(${hue}, 88%, 56%)"/>
+              <stop offset=".52" stop-color="hsl(${(hue + 44) % 360}, 82%, 48%)"/>
+              <stop offset="1" stop-color="hsl(${(hue + 92) % 360}, 88%, 58%)"/>
+            </linearGradient>
+            <radialGradient id="r" cx="28%" cy="18%" r="76%">
+              <stop offset="0" stop-color="#fff" stop-opacity=".72"/>
+              <stop offset=".35" stop-color="#fff" stop-opacity=".12"/>
+              <stop offset="1" stop-color="#000" stop-opacity=".28"/>
+            </radialGradient>
+            <filter id="s" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="#000" flood-opacity=".28"/></filter>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#g)"/>
+          <rect width="100%" height="100%" fill="url(#r)"/>
+          <g opacity=".20" fill="none" stroke="#fff" stroke-width="${isIcon ? 9 : 7}">
+            <path d="M${w*.08} ${h*.26} C ${w*.32} ${h*.02}, ${w*.62} ${h*.58}, ${w*.94} ${h*.20}"/>
+            <path d="M${w*.02} ${h*.76} C ${w*.24} ${h*.46}, ${w*.63} ${h*.98}, ${w*.98} ${h*.66}"/>
+          </g>
+          <circle cx="${w*.76}" cy="${h*.28}" r="${Math.min(w,h)*.14}" fill="#fff" opacity=".16"/>
+          <g filter="url(#s)">
+            <rect x="${w*.16}" y="${h*.22}" width="${w*.25}" height="${w*.25}" rx="${w*.07}" fill="#101014" opacity=".72" transform="rotate(-10 ${w*.28} ${h*.34})"/>
+            <circle cx="${w*.68}" cy="${h*.45}" r="${Math.min(w,h)*.13}" fill="#fff" opacity=".24"/>
+            <polygon points="${w*.63},${h*.40} ${w*.78},${h*.45} ${w*.63},${h*.52}" fill="#fff" opacity=".88"/>
+          </g>
+          <text x="${isIcon ? w*.5 : w*.08}" y="${isIcon ? h*.56 : h*.68}" text-anchor="${isIcon ? 'middle' : 'start'}" font-family="Arial Black, Arial, sans-serif" font-size="${isIcon ? 250 : 88}" font-weight="900" fill="#fff" letter-spacing="-5">${isIcon ? letter : shortTitle}</text>
+          <text x="${isIcon ? w*.5 : w*.085}" y="${isIcon ? h*.70 : h*.78}" text-anchor="${isIcon ? 'middle' : 'start'}" font-family="Arial, sans-serif" font-size="${isIcon ? 52 : 38}" font-weight="800" fill="#fff" opacity=".86">${genre}</text>
+        </svg>`;
+      return 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg);
+    }
+
+    let appStoreCallbackIndex = 0;
+
+    function fallbackEnvironmentGame(seed, index) {
+      const genre = seed.genre || ENV_GENRES[index % ENV_GENRES.length];
+      const rating = (4.2 + Math.random() * 0.7).toFixed(1);
+      return {
+        title: seed.title,
+        genre,
+        rating,
+        icon: makeEnvironmentSvg('icon', index + 1, seed.title, genre),
+        banner: makeEnvironmentSvg('banner', index + 1, seed.title, genre),
+        url: seed.appStoreId ? `https://apps.apple.com/app/id${seed.appStoreId}` : '#mock-game-' + seed.title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, ''),
+        playUrl: seed.playId ? `https://play.google.com/store/apps/details?id=${seed.playId}` : ''
+      };
+    }
+
+    function lookupAppStoreGame(seed) {
+      return new Promise(resolve => {
+        if (!seed.appStoreId) return resolve(null);
+        const callbackName = `appStoreLookup_${Date.now()}_${appStoreCallbackIndex++}`;
+        const script = document.createElement('script');
+        let done = false;
+
+        function finish(value) {
+          if (done) return;
+          done = true;
+          delete window[callbackName];
+          script.remove();
+          resolve(value);
+        }
+
+        window[callbackName] = data => finish(data && data.results && data.results[0] ? data.results[0] : null);
+        script.onerror = () => finish(null);
+        script.src = `https://itunes.apple.com/lookup?id=${encodeURIComponent(seed.appStoreId)}&country=us&entity=software&callback=${callbackName}`;
+        document.head.appendChild(script);
+        setTimeout(() => finish(null), 6500);
+      });
+    }
+
+    function buildRealEnvironmentGame(seed, index, appStoreData) {
+      const fallback = fallbackEnvironmentGame(seed, index);
+      if (!appStoreData) return fallback;
+      const screenshots = [].concat(appStoreData.screenshotUrls || [], appStoreData.ipadScreenshotUrls || []);
+      return {
+        title: appStoreData.trackName || fallback.title,
+        genre: appStoreData.primaryGenreName || fallback.genre,
+        rating: appStoreData.averageUserRating ? Number(appStoreData.averageUserRating).toFixed(1) : fallback.rating,
+        icon: appStoreData.artworkUrl512 || appStoreData.artworkUrl100 || fallback.icon,
+        banner: screenshots[0] || appStoreData.artworkUrl512 || fallback.banner,
+        url: appStoreData.trackViewUrl || fallback.url,
+        playUrl: fallback.playUrl
+      };
+    }
+
+    function randomizeEnvironment() {
+      const seeds = shuffleCopy(REAL_GAMES).slice(0, 12);
+      state.envGames = seeds.map((seed, index) => fallbackEnvironmentGame(seed, index));
+      updateEnvironment();
+
+      Promise.all(seeds.map(seed => lookupAppStoreGame(seed))).then(results => {
+        state.envGames = seeds.map((seed, index) => buildRealEnvironmentGame(seed, index, results[index]));
+        updateEnvironment();
+      });
+    }
+
+    function makeDemoScreenshot(index) {
+      const w = 1080;
+      const h = 1920;
+      const hue = (index * 34) % 360;
+      const title = ['START', 'BOSS', 'BOOST', 'SHOP', 'DAILY', 'ARENA', 'SKINS', 'MAP', 'REWARD', 'EVENT'][index - 1] || `SHOT ${index}`;
+      const svg = `
+        <svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}">
+          <defs>
+            <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="hsl(${hue}, 90%, 56%)"/>
+              <stop offset=".55" stop-color="hsl(${(hue + 46) % 360}, 88%, 48%)"/>
+              <stop offset="1" stop-color="hsl(${(hue + 92) % 360}, 92%, 58%)"/>
+            </linearGradient>
+            <radialGradient id="r" cx="30%" cy="18%" r="82%">
+              <stop offset="0" stop-color="#fff" stop-opacity=".82"/>
+              <stop offset=".28" stop-color="#fff" stop-opacity=".12"/>
+              <stop offset="1" stop-color="#000" stop-opacity=".32"/>
+            </radialGradient>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#g)"/>
+          <rect width="100%" height="100%" fill="url(#r)"/>
+          <rect x="76" y="96" width="928" height="1728" rx="70" fill="#101014" opacity=".28"/>
+          <rect x="126" y="170" width="828" height="420" rx="54" fill="#fff" opacity=".20"/>
+          <circle cx="540" cy="875" r="235" fill="#fff" opacity=".18"/>
+          <path d="M290 860 C360 670, 720 670, 790 860 C850 1038, 680 1190, 540 1190 C400 1190, 230 1038, 290 860 Z" fill="#111827" opacity=".82"/>
+          <circle cx="448" cy="890" r="42" fill="#ffcc00"/>
+          <circle cx="632" cy="890" r="42" fill="#ffcc00"/>
+          <rect x="156" y="1340" width="768" height="118" rx="34" fill="#fff" opacity=".24"/>
+          <rect x="220" y="1500" width="640" height="92" rx="30" fill="#fff" opacity=".18"/>
+          <text x="540" y="300" text-anchor="middle" font-family="Arial Black, Arial, sans-serif" font-size="118" font-weight="900" fill="#fff" letter-spacing="-6">${title}</text>
+          <text x="540" y="422" text-anchor="middle" font-family="Arial, sans-serif" font-size="58" font-weight="800" fill="#fff" opacity=".84">Screenshot ${index}</text>
+        </svg>`;
+      return 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg);
+    }
+
+    function loadDemoAssets() {
+      state.icon = makeDemoSvg('icon');
+      state.banner = makeDemoSvg('banner');
+      state.screenshots = Array.from({ length: 10 }, (_, index) => makeDemoScreenshot(index + 1));
+      iconMeta.innerHTML = '<span class="chip">demo icon: 1024 × 1024</span><span class="chip">ratio 1.00:1</span>';
+      bannerMeta.innerHTML = '<span class="chip">demo banner: 1600 × 840</span><span class="chip">ratio 1.90:1</span>';
+      screenshotsMeta.innerHTML = '<span class="chip">10 / 10 demo screenshots</span><span class="chip">1080 × 1920</span>';
+      randomizeEnvironment();
+      updateAssets();
+    }
+
+    function resetAll() {
+      state.icon = '';
+      state.banner = '';
+      state.screenshots = [];
+      state.envGames = [];
+      state.iconFit = 'cover';
+      state.bannerFit = 'cover';
+      state.screenshotFit = 'cover';
+      titleInput.value = 'Cosmo Cats: Turbo Run';
+      genreInput.value = 'Аркада';
+      ratingInput.value = '4.8';
+      iconInput.value = '';
+      bannerInput.value = '';
+      screenshotsInput.value = '';
+iconMeta.innerHTML = '<span class="chip">нажми на +</span><span class="chip">скругление имитируется макетом</span>';
+      bannerMeta.innerHTML = '<span class="chip">нажми на +</span><span class="chip">FB: 1200×627 / 1600×300</span><span class="chip">Yandex: cover в каталоге</span>';
+      screenshotsMeta.innerHTML = '<span class="chip">нажми на +</span><span class="chip">0 / 10 screenshots</span>';
+      setFit('icon', 'cover');
+      setFit('banner', 'cover');
+      setFit('screenshot', 'cover');
+      updateText();
+      updateAssets();
+      updateEnvironment();
+    }
+
+    $$('[data-platform-tab]').forEach(btn => btn.addEventListener('click', () => setPlatform(btn.dataset.platformTab)));
+    $$('[data-device]').forEach(btn => btn.addEventListener('click', () => setDevice(btn.dataset.device)));
+    $$('.fit-row button').forEach(btn => btn.addEventListener('click', () => setFit(btn.closest('.fit-row').dataset.fit, btn.dataset.fitValue)));
+
+    [titleInput, genreInput, ratingInput].forEach(input => input.addEventListener('input', updateText));
+    attachDropzone('icon', iconInput);
+    attachDropzone('banner', bannerInput);
+    attachScreenshotsDropzone();
+    $('#demoBtn').addEventListener('click', loadDemoAssets);
+    $('#envBtn').addEventListener('click', randomizeEnvironment);
+    $('#resetBtn').addEventListener('click', resetAll);
+
+    randomizeEnvironment();
+    updateText();
+    updateAssets();
+  </script>
+</body>
+</html>
