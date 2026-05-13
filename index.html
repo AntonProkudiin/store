@@ -1120,6 +1120,112 @@
     .stage.mobile .as-shot, .stage.mobile .as-shot.tall { min-height: 360px; }
     .stage.mobile .gp-feature { height: 270px; }
     .stage.mobile .gp-reco-row { grid-template-columns: repeat(2, 1fr); }
+
+    /* Clean upload panel overrides */
+    .eyebrow,
+    .meta,
+    .fit-row,
+    .note {
+      display: none !important;
+    }
+
+    .section > .label {
+      margin-bottom: 12px;
+      color: var(--apple-text);
+      font-size: 18px;
+      font-weight: 850;
+      letter-spacing: -.035em;
+    }
+
+    .section > .label span {
+      display: none !important;
+    }
+
+    .clean-dropzone,
+    .dropzone[data-drop="icon"],
+    .dropzone[data-drop="banner"],
+    .dropzone[data-drop="screenshots"] {
+      grid-template-columns: 104px minmax(0, 1fr) !important;
+      min-height: 126px !important;
+      padding: 14px !important;
+      gap: 16px !important;
+    }
+
+    .dropzone[data-drop="icon"] .thumb,
+    .dropzone[data-drop="banner"] .thumb,
+    .dropzone[data-drop="screenshots"] .thumb,
+    .upload-plus {
+      width: 96px !important;
+      height: 96px !important;
+      border-radius: 26px !important;
+      display: grid !important;
+      place-items: center !important;
+      overflow: hidden !important;
+      background:
+        radial-gradient(circle at 34% 28%, rgba(255,255,255,.72), transparent 25%),
+        linear-gradient(135deg, #ffe7b4 0%, #ff917f 100%) !important;
+      background-size: cover !important;
+      background-position: center !important;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,.65), 0 12px 26px rgba(0,0,0,.10) !important;
+      color: rgba(255,255,255,.96) !important;
+      font-size: 58px !important;
+      line-height: 1 !important;
+      font-weight: 300 !important;
+    }
+
+    .dropzone[data-drop="icon"] .thumb.has-image,
+    .dropzone[data-drop="banner"] .thumb.has-image,
+    .dropzone[data-drop="screenshots"] .thumb.has-image,
+    .upload-plus.has-image {
+      color: transparent !important;
+    }
+
+    .dropzone[data-drop="screenshots"] .screenshot-count {
+      min-width: auto !important;
+      width: auto !important;
+      height: auto !important;
+      border-radius: 0 !important;
+      background: transparent !important;
+      color: inherit !important;
+      box-shadow: none !important;
+      font-size: inherit !important;
+      font-weight: inherit !important;
+    }
+
+    .dropzone[data-drop="icon"] strong,
+    .dropzone[data-drop="banner"] strong,
+    .dropzone[data-drop="screenshots"] strong {
+      font-size: 18px !important;
+      margin-bottom: 5px !important;
+      letter-spacing: -.02em;
+    }
+
+    .dropzone[data-drop="icon"] span span,
+    .dropzone[data-drop="banner"] span span,
+    .dropzone[data-drop="screenshots"] span span {
+      font-size: 14px !important;
+      color: var(--apple-muted) !important;
+    }
+
+    @media (max-width: 720px) {
+      .clean-dropzone,
+      .dropzone[data-drop="icon"],
+      .dropzone[data-drop="banner"],
+      .dropzone[data-drop="screenshots"] {
+        grid-template-columns: 88px minmax(0, 1fr) !important;
+        min-height: 112px !important;
+      }
+
+      .dropzone[data-drop="icon"] .thumb,
+      .dropzone[data-drop="banner"] .thumb,
+      .dropzone[data-drop="screenshots"] .thumb,
+      .upload-plus {
+        width: 80px !important;
+        height: 80px !important;
+        border-radius: 22px !important;
+        font-size: 48px !important;
+      }
+    }
   </style>
 </head>
 <body data-platform="yandex">
@@ -1176,10 +1282,10 @@
           <div class="section">
             <div class="label">Иконка игры <span>square</span></div>
             <label class="upload-card dropzone" data-drop="icon">
-<span class="thumb" id="iconThumb">+</span>
+<span class="thumb upload-plus" id="iconThumb">+</span>
               <span>
                 <strong>Загрузить иконку</strong>
-                <span>PNG/JPG/WebP. Хорошо проверять 512×512 и 1024×1024. Перетащи файл сюда или нажми.</span>
+                <span>PNG / JPG / WebP</span>
               </span>
               <input id="iconInput" type="file" accept="image/*" />
             </label>
@@ -1193,10 +1299,10 @@
           <div class="section">
             <div class="label">Баннер / cover <span>wide</span></div>
             <label class="upload-card dropzone" data-drop="banner">
-<span class="thumb banner" id="bannerThumb">+</span>
+<span class="thumb banner upload-plus" id="bannerThumb">+</span>
               <span>
                 <strong>Загрузить баннер</strong>
-                <span>Для проверки широких мест: cover, hero, лента, боковой промо-блок.</span>
+                <span>Широкое промо-изображение</span>
               </span>
               <input id="bannerInput" type="file" accept="image/*" />
             </label>
@@ -1210,10 +1316,10 @@
           <div class="section">
             <div class="label">Screenshots <span>до 10 шт.</span></div>
             <label class="upload-card dropzone" data-drop="screenshots">
-<span class="thumb" id="screenshotsThumb"><span class="screenshot-count">+</span></span>
+<span class="thumb upload-plus" id="screenshotsThumb">+</span>
               <span>
                 <strong>Загрузить скриншоты</strong>
-                <span>Можно выбрать сразу несколько PNG/JPG/WebP. Первые 10 попадут в App Store и Google Play галереи по порядку.</span>
+                <span>До 10 изображений</span>
               </span>
               <input id="screenshotsInput" type="file" accept="image/*" multiple />
             </label>
