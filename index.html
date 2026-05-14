@@ -3795,9 +3795,1072 @@
     .screenshot-fb .fb-top-card.tall:first-child .fb-top-media {
       height: 280px !important;
     }
+
+    /* Final UI cleanup: actions + alignment */
+    #exportJsonBtn,
+    #exportReportBtn,
+    #printBtn,
+    #demoBtn,
+    #loadDemoBtn,
+    #demoDataBtn,
+    [data-demo],
+    [data-action="demo"],
+    [data-action="print"],
+    [data-action="report"],
+    [data-action="json"] {
+      display: none !important;
+    }
+
+    .actions {
+      display: flex !important;
+      gap: 10px !important;
+      justify-content: stretch !important;
+      align-items: center !important;
+      padding-top: 14px !important;
+      border-top: 1px solid rgba(15,23,42,.08) !important;
+    }
+
+    .actions .btn,
+    .actions button {
+      flex: 1 1 0 !important;
+      min-width: 0 !important;
+    }
+
+    .actions .btn[style*="display: none"],
+    .actions button[style*="display: none"] {
+      flex: 0 0 auto !important;
+    }
+
+    .workspace {
+      display: grid !important;
+      align-items: start !important;
+      gap: 22px !important;
+    }
+
+    .workspace > .panel,
+    .workspace > .preview-card {
+      margin-top: 0 !important;
+      align-self: start !important;
+    }
+
+    .panel,
+    .preview-card {
+      transform: none !important;
+    }
+
+    .preview-card {
+      min-height: 0 !important;
+    }
+
+    .hero {
+      display: grid !important;
+      grid-template-columns: minmax(0, 1fr) 280px !important;
+      align-items: start !important;
+      gap: 28px !important;
+      margin-bottom: 22px !important;
+    }
+
+    .hero > div:first-child {
+      min-width: 0 !important;
+    }
+
+    .hero-card {
+      justify-self: end !important;
+      align-self: end !important;
+      width: 280px !important;
+      max-width: 280px !important;
+      margin: 0 !important;
+    }
+
+    .hero-card h3 {
+      margin-top: 0 !important;
+    }
+
+    .preview-head {
+      display: grid !important;
+      grid-template-columns: minmax(0, 1fr) auto !important;
+      align-items: start !important;
+      gap: 18px !important;
+      padding: 0 0 18px !important;
+    }
+
+    .preview-head h2 {
+      margin-top: 0 !important;
+    }
+
+    .preview-actions {
+      align-self: start !important;
+      margin-top: 0 !important;
+    }
+
+    .panel-inner h2,
+    .preview-head h2 {
+      line-height: 1.05 !important;
+    }
+
+    @media (max-width: 980px) {
+      .hero {
+        grid-template-columns: 1fr !important;
+      }
+      .hero-card {
+        justify-self: stretch !important;
+        width: auto !important;
+        max-width: none !important;
+      }
+    }
+
+    /* Hard final layout alignment */
+    html, body {
+      min-height: 100%;
+    }
+
+    .app {
+      width: min(1840px, calc(100vw - 72px)) !important;
+      max-width: none !important;
+      margin: 0 auto !important;
+      padding: 22px 0 48px !important;
+      box-sizing: border-box !important;
+    }
+
+    .hero {
+      display: grid !important;
+      grid-template-columns: minmax(0, 1fr) 280px !important;
+      column-gap: 28px !important;
+      align-items: end !important;
+      width: 100% !important;
+      margin: 0 0 22px !important;
+      padding: 0 !important;
+      box-sizing: border-box !important;
+    }
+
+    .hero > div:first-child {
+      min-width: 0 !important;
+      max-width: 760px !important;
+    }
+
+    .hero h1 {
+      margin: 0 0 8px !important;
+      max-width: 760px !important;
+    }
+
+    .hero p {
+      margin: 0 !important;
+      max-width: 740px !important;
+    }
+
+    .hero-card {
+      width: 280px !important;
+      max-width: 280px !important;
+      min-width: 280px !important;
+      justify-self: end !important;
+      align-self: end !important;
+      margin: 0 !important;
+      box-sizing: border-box !important;
+    }
+
+    .workspace {
+      width: 100% !important;
+      display: grid !important;
+      grid-template-columns: 340px minmax(0, 1fr) !important;
+      gap: 22px !important;
+      align-items: start !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      box-sizing: border-box !important;
+    }
+
+    .workspace > * {
+      min-width: 0 !important;
+    }
+
+    .panel,
+    .preview-card {
+      margin: 0 !important;
+      align-self: start !important;
+      transform: none !important;
+      box-sizing: border-box !important;
+    }
+
+    .panel {
+      width: 340px !important;
+      max-width: 340px !important;
+    }
+
+    .preview-card {
+      width: 100% !important;
+      max-width: none !important;
+      min-width: 0 !important;
+      padding: 22px !important;
+    }
+
+    .panel-inner {
+      padding: 22px !important;
+    }
+
+    .panel-inner > h2,
+    .preview-head h2 {
+      margin: 0 !important;
+      line-height: 1.05 !important;
+    }
+
+    .preview-head {
+      display: grid !important;
+      grid-template-columns: minmax(0, 1fr) auto !important;
+      gap: 16px !important;
+      align-items: start !important;
+      margin: 0 0 18px !important;
+      padding: 0 !important;
+    }
+
+    .preview-head p {
+      margin: 10px 0 0 !important;
+    }
+
+    .preview-actions {
+      display: flex !important;
+      align-items: start !important;
+      justify-content: flex-end !important;
+      gap: 10px !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      min-width: max-content !important;
+    }
+
+    .stage-wrap {
+      margin: 0 !important;
+      width: 100% !important;
+      box-sizing: border-box !important;
+    }
+
+    .actions {
+      display: grid !important;
+      grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+      gap: 10px !important;
+      margin: 18px 0 0 !important;
+      padding-top: 16px !important;
+    }
+
+    #exportJsonBtn,
+    #exportReportBtn,
+    #printBtn,
+    #demoBtn,
+    #loadDemoBtn,
+    #demoDataBtn,
+    .actions button:nth-child(n+3),
+    .actions .btn:nth-child(n+3) {
+      display: none !important;
+    }
+
+    .actions button,
+    .actions .btn {
+      width: 100% !important;
+      min-width: 0 !important;
+    }
+
+    @media (max-width: 1180px) {
+      .app {
+        width: min(100% - 32px, 980px) !important;
+      }
+      .hero {
+        grid-template-columns: 1fr !important;
+        row-gap: 16px !important;
+        align-items: start !important;
+      }
+      .hero-card {
+        justify-self: stretch !important;
+        width: 100% !important;
+        min-width: 0 !important;
+        max-width: none !important;
+      }
+      .workspace {
+        grid-template-columns: 1fr !important;
+      }
+      .panel {
+        width: 100% !important;
+        max-width: none !important;
+      }
+    }
+
+    /* Platform selector as vertical list + preview controls alignment */
+    .platform-tabs {
+      display: grid !important;
+      grid-template-columns: 1fr !important;
+      gap: 8px !important;
+      overflow: visible !important;
+      padding: 8px !important;
+      border-radius: 22px !important;
+      background: rgba(255,255,255,.28) !important;
+      scrollbar-width: none !important;
+    }
+
+    .platform-tabs::-webkit-scrollbar {
+      display: none !important;
+    }
+
+    .platform-tabs button {
+      width: 100% !important;
+      height: 44px !important;
+      min-height: 44px !important;
+      justify-content: flex-start !important;
+      text-align: left !important;
+      padding: 0 14px !important;
+      border-radius: 15px !important;
+      white-space: nowrap !important;
+    }
+
+    .platform-tabs button.active {
+      transform: none !important;
+    }
+
+    .section .label + .platform-tabs {
+      margin-top: 8px !important;
+    }
+
+    .preview-actions {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: flex-end !important;
+      gap: 10px !important;
+      min-height: 42px !important;
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+
+    .fullscreen-btn,
+    .device-switch,
+    .device-switch button {
+      height: 42px !important;
+      min-height: 42px !important;
+      box-sizing: border-box !important;
+    }
+
+    .fullscreen-btn {
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      line-height: 1 !important;
+      padding: 0 16px !important;
+      margin: 0 !important;
+      align-self: center !important;
+    }
+
+    .device-switch {
+      display: inline-grid !important;
+      grid-auto-flow: column !important;
+      grid-auto-columns: minmax(92px, auto) !important;
+      align-items: center !important;
+      padding: 4px !important;
+      margin: 0 !important;
+      align-self: center !important;
+    }
+
+    .device-switch button {
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      padding: 0 16px !important;
+      line-height: 1 !important;
+      margin: 0 !important;
+    }
+
+    @media (max-width: 1180px) {
+      .preview-head {
+        grid-template-columns: 1fr !important;
+      }
+      .preview-actions {
+        justify-content: flex-start !important;
+      }
+    }
+
+    /* Split Screen A/B test mode */
+    .split-btn {
+      min-width: 118px !important;
+    }
+
+    .split-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 2147483000;
+      display: none;
+      grid-template-rows: 56px minmax(0, 1fr);
+      background:
+        radial-gradient(circle at 16% 12%, rgba(255,255,255,.16), transparent 30%),
+        radial-gradient(circle at 86% 16%, var(--ambient-a), transparent 34%),
+        #0b0d12;
+      color: #fff;
+      padding: 10px;
+      box-sizing: border-box;
+      overflow: hidden;
+    }
+
+    .split-overlay.active {
+      display: grid;
+      animation: splitIn .42s cubic-bezier(.22, 1, .36, 1) both;
+    }
+
+    .split-overlay:fullscreen,
+    .split-overlay:-webkit-full-screen {
+      width: 100vw;
+      height: 100vh;
+    }
+
+    @keyframes splitIn {
+      from { opacity: 0; transform: scale(.985); filter: blur(8px); }
+      to { opacity: 1; transform: scale(1); filter: blur(0); }
+    }
+
+    .split-topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      height: 46px;
+      padding: 0 12px 10px;
+      box-sizing: border-box;
+    }
+
+    .split-topbar strong {
+      display: block;
+      font-size: 16px;
+      letter-spacing: -.03em;
+    }
+
+    .split-topbar span {
+      display: block;
+      margin-top: 2px;
+      color: rgba(255,255,255,.62);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .split-topbar button {
+      height: 38px;
+      border: 1px solid rgba(255,255,255,.18);
+      border-radius: 999px;
+      padding: 0 16px;
+      background: rgba(255,255,255,.12);
+      color: #fff;
+      font-weight: 900;
+      backdrop-filter: blur(16px) saturate(1.18);
+      -webkit-backdrop-filter: blur(16px) saturate(1.18);
+    }
+
+    .split-grid {
+      min-height: 0;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 10px;
+    }
+
+    .split-pane {
+      min-width: 0;
+      min-height: 0;
+      display: grid;
+      grid-template-rows: 38px minmax(0, 1fr);
+      border: 1px solid rgba(255,255,255,.16);
+      border-radius: 20px;
+      overflow: hidden;
+      background: rgba(255,255,255,.08);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.10), 0 18px 50px rgba(0,0,0,.20);
+    }
+
+    .split-label {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 0 14px;
+      background: rgba(255,255,255,.10);
+      border-bottom: 1px solid rgba(255,255,255,.12);
+    }
+
+    .split-label strong {
+      font-size: 13px;
+      letter-spacing: -.02em;
+    }
+
+    .split-label span {
+      color: rgba(255,255,255,.58);
+      font-size: 11px;
+      font-weight: 800;
+    }
+
+    .split-stage {
+      min-width: 0;
+      min-height: 0;
+      overflow: hidden;
+      background: #111;
+    }
+
+    .split-screen {
+      width: 100%;
+      height: 100%;
+      min-height: 100%;
+      overflow: hidden;
+      transform-origin: top left;
+    }
+
+    .split-screen > * {
+      width: 100% !important;
+      height: 100% !important;
+      min-height: 100% !important;
+      max-height: 100% !important;
+    }
+
+    .split-overlay[data-platform="yandex"] .yx-screen,
+    .split-overlay[data-platform="fb"] .fb-screen-real,
+    .split-overlay[data-platform="appstore"] .as-ref-screen,
+    .split-overlay[data-platform="gplay"] .gp-ref-screen,
+    .split-overlay[data-platform="appstore"][data-device="mobile"] .ios-store-screen,
+    .split-overlay[data-platform="gplay"][data-device="mobile"] .gpm-screen {
+      width: 100% !important;
+      height: 100% !important;
+      min-height: 100% !important;
+      overflow: hidden !important;
+    }
+
+    .split-overlay .fb-hover-preview,
+    .split-overlay .floating-shot-btn {
+      display: none !important;
+    }
+
+    .split-overlay[data-platform="fb"] .fb-real-feed {
+      padding-left: 28px !important;
+      padding-right: 18px !important;
+    }
+
+    .split-overlay[data-platform="fb"] .fb-top-grid {
+      grid-template-columns: repeat(auto-fill, 165.05px) !important;
+      gap: 10px !important;
+    }
+
+    .split-overlay[data-platform="yandex"] .yx-grid {
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)) !important;
+      gap: 8px !important;
+    }
+
+    .split-overlay[data-platform="yandex"] .yx-card,
+    .split-overlay[data-platform="yandex"] .yx-card.big,
+    .split-overlay[data-platform="yandex"] .yx-card.wide {
+      width: auto !important;
+      min-width: 0 !important;
+      max-width: none !important;
+      height: auto !important;
+      min-height: 0 !important;
+      max-height: none !important;
+      aspect-ratio: 302.33 / 170.5 !important;
+    }
+
+    @media (max-width: 900px) {
+      .split-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr;
+      }
+    }
+
+    /* Variant B competitor search */
+    .competitor-section {
+      display: grid;
+      gap: 10px;
+    }
+
+    .competitor-search-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 84px;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .mini-btn {
+      height: 42px;
+      border: 0;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: #fff;
+      font-weight: 900;
+      box-shadow: 0 12px 24px color-mix(in srgb, var(--accent) 18%, transparent);
+    }
+
+    .mini-btn:disabled {
+      opacity: .55;
+      pointer-events: none;
+    }
+
+    .hint-small {
+      color: rgba(71,85,105,.72);
+      font-size: 11px;
+      line-height: 1.35;
+    }
+
+    .competitor-results {
+      display: grid;
+      gap: 8px;
+      max-height: 310px;
+      overflow-y: auto;
+      padding-right: 2px;
+      scrollbar-width: thin;
+    }
+
+    .competitor-card {
+      display: grid;
+      grid-template-columns: 42px minmax(0, 1fr) auto;
+      gap: 9px;
+      align-items: center;
+      padding: 8px;
+      border-radius: 16px;
+      background: rgba(255,255,255,.42);
+      border: 1px solid rgba(255,255,255,.50);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.62);
+      backdrop-filter: blur(16px) saturate(1.12);
+      -webkit-backdrop-filter: blur(16px) saturate(1.12);
+    }
+
+    .competitor-card img {
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
+      object-fit: cover;
+      background: rgba(0,0,0,.06);
+    }
+
+    .competitor-card div {
+      min-width: 0;
+    }
+
+    .competitor-card strong,
+    .competitor-card span {
+      display: block;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .competitor-card strong {
+      font-size: 12px;
+      color: #111827;
+      line-height: 1.15;
+    }
+
+    .competitor-card span {
+      margin-top: 3px;
+      color: rgba(71,85,105,.72);
+      font-size: 10px;
+      font-weight: 750;
+    }
+
+    .competitor-card button {
+      height: 30px;
+      border: 0;
+      border-radius: 999px;
+      padding: 0 10px;
+      background: rgba(17,24,39,.86);
+      color: #fff;
+      font-size: 10px;
+      font-weight: 900;
+    }
+
+    .competitor-empty,
+    .competitor-loading {
+      border-radius: 16px;
+      padding: 12px;
+      background: rgba(255,255,255,.30);
+      border: 1px dashed rgba(15,23,42,.14);
+      color: rgba(71,85,105,.74);
+      font-size: 12px;
+      text-align: center;
+    }
+
+    /* Cinematic intro */
+    .intro-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 2147483600;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      background: #000;
+      color: #050505;
+      isolation: isolate;
+      cursor: default;
+      animation: introWorld 7.4s cubic-bezier(.22, 1, .36, 1) forwards;
+    }
+
+    .intro-overlay::before {
+      content: "";
+      position: absolute;
+      inset: -20%;
+      z-index: 0;
+      background:
+        radial-gradient(circle at 20% 22%, rgba(255, 144, 0, .35), transparent 28%),
+        radial-gradient(circle at 76% 24%, rgba(24, 119, 242, .36), transparent 30%),
+        radial-gradient(circle at 62% 78%, rgba(52, 168, 83, .32), transparent 32%),
+        radial-gradient(circle at 38% 70%, rgba(100, 210, 255, .34), transparent 30%);
+      filter: blur(44px) saturate(1.18);
+      opacity: 0;
+      transform: scale(1.12) rotate(0deg);
+      animation: introAurora 7.1s ease-in-out forwards;
+    }
+
+    .intro-overlay::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background:
+        radial-gradient(circle at 50% 48%, rgba(255,255,255,.94), rgba(255,255,255,.72) 34%, rgba(255,255,255,.18) 62%, transparent 76%);
+      opacity: 0;
+      animation: introWhiteBloom 7.4s cubic-bezier(.22, 1, .36, 1) forwards;
+    }
+
+    .intro-glow {
+      position: absolute;
+      z-index: 0;
+      border-radius: 999px;
+      filter: blur(72px);
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .intro-glow-a {
+      width: 980px;
+      height: 980px;
+      left: -260px;
+      bottom: -360px;
+      background: radial-gradient(circle, rgba(255,176,0,.52), transparent 64%);
+      animation: introGlowA 7.4s ease-in-out forwards;
+    }
+
+    .intro-glow-b {
+      width: 920px;
+      height: 920px;
+      right: -280px;
+      top: -320px;
+      background: radial-gradient(circle, rgba(10,132,255,.50), transparent 64%);
+      animation: introGlowB 7.4s ease-in-out forwards;
+    }
+
+    .intro-grain {
+      position: absolute;
+      inset: 0;
+      z-index: 3;
+      opacity: .035;
+      pointer-events: none;
+      background-image:
+        linear-gradient(0deg, rgba(0,0,0,.35) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,0,0,.28) 1px, transparent 1px);
+      background-size: 4px 4px;
+      mix-blend-mode: multiply;
+    }
+
+    .intro-overlay h1 {
+      position: relative;
+      z-index: 4;
+      margin: 0;
+      max-width: min(92vw, 1100px);
+      text-align: center;
+      color: #050505;
+      font-size: clamp(40px, 8vw, 122px);
+      line-height: .94;
+      letter-spacing: -.075em;
+      font-weight: 950;
+      opacity: 0;
+      filter: blur(34px);
+      transform: translateY(24px) scale(.965);
+      animation: introTitle 5.8s cubic-bezier(.16, 1, .3, 1) 1.05s forwards;
+    }
+
+    .intro-skip {
+      position: absolute;
+      left: 50%;
+      bottom: 28px;
+      z-index: 5;
+      transform: translateX(-50%);
+      padding: 9px 14px;
+      border-radius: 999px;
+      color: rgba(17,24,39,.52);
+      background: rgba(255,255,255,.32);
+      border: 1px solid rgba(255,255,255,.36);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: -.01em;
+      opacity: 0;
+      backdrop-filter: blur(18px) saturate(1.12);
+      -webkit-backdrop-filter: blur(18px) saturate(1.12);
+      animation: introSkip 1.2s ease 2.1s forwards;
+    }
+
+    .intro-overlay.is-exiting {
+      pointer-events: none;
+      animation: introExit 1.15s cubic-bezier(.16, 1, .3, 1) forwards !important;
+    }
+
+    .intro-overlay.is-exiting h1 {
+      animation: introTitleExit 1.05s cubic-bezier(.16, 1, .3, 1) forwards !important;
+    }
+
+    .intro-overlay.is-hidden {
+      display: none !important;
+    }
+
+    @keyframes introWorld {
+      0% { background: #000; }
+      24% { background: #08090d; }
+      66% { background: #dfe8f5; }
+      100% { background: rgba(248,250,252,0); }
+    }
+
+    @keyframes introAurora {
+      0% { opacity: 0; transform: scale(1.18) rotate(-8deg); }
+      22% { opacity: .72; }
+      62% { opacity: .92; transform: scale(1.02) rotate(14deg); }
+      100% { opacity: 0; transform: scale(1.18) rotate(26deg); }
+    }
+
+    @keyframes introWhiteBloom {
+      0%, 34% { opacity: 0; transform: scale(.86); }
+      70% { opacity: .88; transform: scale(1.04); }
+      100% { opacity: 0; transform: scale(1.18); }
+    }
+
+    @keyframes introGlowA {
+      0% { opacity: 0; transform: translate3d(0,0,0) scale(.9); }
+      25% { opacity: .58; }
+      70% { opacity: .72; transform: translate3d(38vw,-22vh,0) scale(1.16); }
+      100% { opacity: 0; transform: translate3d(66vw,-40vh,0) scale(1.28); }
+    }
+
+    @keyframes introGlowB {
+      0% { opacity: 0; transform: translate3d(0,0,0) scale(.92); }
+      28% { opacity: .50; }
+      72% { opacity: .66; transform: translate3d(-38vw,32vh,0) scale(1.12); }
+      100% { opacity: 0; transform: translate3d(-62vw,48vh,0) scale(1.26); }
+    }
+
+    @keyframes introTitle {
+      0% {
+        opacity: 0;
+        filter: blur(48px);
+        transform: translateY(34px) scale(.94);
+        letter-spacing: -.11em;
+      }
+      28% {
+        opacity: .34;
+        filter: blur(28px);
+        transform: translateY(18px) scale(.965);
+        letter-spacing: -.095em;
+      }
+      48% {
+        opacity: .86;
+        filter: blur(9px);
+        transform: translateY(3px) scale(.992);
+        letter-spacing: -.082em;
+      }
+      68% {
+        opacity: 1;
+        filter: blur(0);
+        transform: translateY(0) scale(1);
+        letter-spacing: -.075em;
+      }
+      84% {
+        opacity: .98;
+        filter: blur(.4px);
+        transform: translateY(0) scale(1.002);
+      }
+      100% {
+        opacity: .92;
+        filter: blur(1.5px);
+        transform: translateY(-4px) scale(1.01);
+      }
+    }
+
+    @keyframes introTitleExit {
+      0% {
+        opacity: .92;
+        filter: blur(1.5px);
+        transform: translateY(-4px) scale(1.01);
+      }
+      45% {
+        opacity: .48;
+        filter: blur(14px);
+        transform: translateY(-10px) scale(1.024);
+      }
+      100% {
+        opacity: 0;
+        filter: blur(38px);
+        transform: translateY(-18px) scale(1.045);
+      }
+    }
+
+    @keyframes introExit {
+      from { opacity: 1; filter: blur(0); }
+      to { opacity: 0; filter: blur(20px); }
+    }
+
+    @keyframes introSkip {
+      from { opacity: 0; transform: translate(-50%, 10px); }
+      to { opacity: 1; transform: translate(-50%, 0); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .intro-overlay,
+      .intro-overlay::before,
+      .intro-overlay::after,
+      .intro-glow,
+      .intro-overlay h1,
+      .intro-skip {
+        animation-duration: .01ms !important;
+        animation-delay: 0ms !important;
+      }
+    }
+
+    /* Intro smooth single-pass dissolve */
+    .intro-overlay {
+      animation: introOverlayFull 8.8s cubic-bezier(.16, 1, .3, 1) forwards !important;
+    }
+
+    .intro-overlay::before {
+      animation: introAuroraFull 8.8s ease-in-out forwards !important;
+    }
+
+    .intro-overlay::after {
+      animation: introWhiteBloomFull 8.8s cubic-bezier(.16, 1, .3, 1) forwards !important;
+    }
+
+    .intro-glow-a {
+      animation: introGlowAFull 8.8s ease-in-out forwards !important;
+    }
+
+    .intro-glow-b {
+      animation: introGlowBFull 8.8s ease-in-out forwards !important;
+    }
+
+    .intro-overlay h1 {
+      animation: introTextFull 8.8s cubic-bezier(.16, 1, .3, 1) forwards !important;
+    }
+
+    .intro-overlay.is-exiting {
+      animation: introExit .9s cubic-bezier(.16, 1, .3, 1) forwards !important;
+    }
+
+    .intro-overlay.is-exiting h1 {
+      animation: introTitleExit .9s cubic-bezier(.16, 1, .3, 1) forwards !important;
+    }
+
+    @keyframes introOverlayFull {
+      0% {
+        opacity: 1;
+        background: #000;
+        filter: blur(0) saturate(1);
+      }
+      16% {
+        opacity: 1;
+        background: #050609;
+      }
+      52% {
+        opacity: 1;
+        background: #f2f6fb;
+        filter: blur(0) saturate(1.02);
+      }
+      74% {
+        opacity: .98;
+        background: rgba(248,250,252,.92);
+        filter: blur(0) saturate(1);
+      }
+      88% {
+        opacity: .54;
+        background: rgba(248,250,252,.48);
+        filter: blur(8px) saturate(1.03);
+      }
+      100% {
+        opacity: 0;
+        background: rgba(248,250,252,0);
+        filter: blur(18px) saturate(1.02);
+        pointer-events: none;
+      }
+    }
+
+    @keyframes introTextFull {
+      0% {
+        opacity: 0;
+        filter: blur(56px);
+        transform: translateY(34px) scale(.94);
+        letter-spacing: -.115em;
+      }
+      24% {
+        opacity: .18;
+        filter: blur(36px);
+        transform: translateY(24px) scale(.955);
+        letter-spacing: -.105em;
+      }
+      45% {
+        opacity: .82;
+        filter: blur(12px);
+        transform: translateY(6px) scale(.99);
+        letter-spacing: -.087em;
+      }
+      58% {
+        opacity: 1;
+        filter: blur(0);
+        transform: translateY(0) scale(1);
+        letter-spacing: -.075em;
+      }
+      70% {
+        opacity: .96;
+        filter: blur(.6px);
+        transform: translateY(0) scale(1.002);
+      }
+      82% {
+        opacity: .48;
+        filter: blur(18px);
+        transform: translateY(-8px) scale(1.025);
+      }
+      100% {
+        opacity: 0;
+        filter: blur(54px);
+        transform: translateY(-20px) scale(1.055);
+      }
+    }
+
+    @keyframes introAuroraFull {
+      0% { opacity: 0; transform: scale(1.18) rotate(-8deg); }
+      24% { opacity: .70; }
+      58% { opacity: .88; transform: scale(1.02) rotate(14deg); }
+      82% { opacity: .38; transform: scale(1.10) rotate(22deg); }
+      100% { opacity: 0; transform: scale(1.22) rotate(30deg); }
+    }
+
+    @keyframes introWhiteBloomFull {
+      0%, 32% { opacity: 0; transform: scale(.86); }
+      58% { opacity: .86; transform: scale(1.04); }
+      82% { opacity: .30; transform: scale(1.12); }
+      100% { opacity: 0; transform: scale(1.22); }
+    }
+
+    @keyframes introGlowAFull {
+      0% { opacity: 0; transform: translate3d(0,0,0) scale(.9); }
+      28% { opacity: .58; }
+      64% { opacity: .68; transform: translate3d(38vw,-22vh,0) scale(1.16); }
+      86% { opacity: .26; transform: translate3d(56vw,-32vh,0) scale(1.22); }
+      100% { opacity: 0; transform: translate3d(66vw,-40vh,0) scale(1.28); }
+    }
+
+    @keyframes introGlowBFull {
+      0% { opacity: 0; transform: translate3d(0,0,0) scale(.92); }
+      30% { opacity: .50; }
+      66% { opacity: .62; transform: translate3d(-38vw,32vh,0) scale(1.12); }
+      86% { opacity: .24; transform: translate3d(-52vw,42vh,0) scale(1.20); }
+      100% { opacity: 0; transform: translate3d(-62vw,48vh,0) scale(1.26); }
+    }
   </style>
 </head>
-<body data-platform="yandex" data-safe="false" data-readability="false" data-test="normal" data-compare="false">
+<body$1>
+  <div id="introOverlay" class="intro-overlay" aria-label="Intro screen">
+    <div class="intro-glow intro-glow-a"></div>
+    <div class="intro-glow intro-glow-b"></div>
+    <div class="intro-grain"></div>
+    <h1>Здесь начинается реклама.</h1>
+    <div class="intro-skip">двойной клик — пропустить</div>
+  </div>
   <main class="app">
     <header class="hero">
       <div>
@@ -3882,6 +4945,16 @@
             </label>
           </div>
 
+          <div class="section competitor-section">
+            <div class="label">Variant B · конкурент</div>
+            <div class="competitor-search-row">
+              <input id="competitorSearchInput" class="field" type="search" placeholder="Royal Match, Gossip Harbor..." />
+              <button id="competitorSearchBtn" class="mini-btn" type="button">Search</button>
+            </div>
+            <div class="hint-small">Локальный тест: ищем в App Store и адаптируем ассеты под текущие макеты.</div>
+            <div id="competitorResults" class="competitor-results"></div>
+          </div>
+
           <div class="section">
             <div class="label">Проверки <small>visual QA</small></div>
             <div class="switch-line"><span>Safe zones</span><button class="toggle" id="safeToggle" type="button"></button></div>
@@ -3937,6 +5010,7 @@
               <p id="previewSubtitle">Платформа, стор-листинг, конкуренты и проверки в одном окне.</p>
             </div>
             <div class="preview-actions">
+              <button id="splitScreenBtn" class="fullscreen-btn split-btn" type="button">⇄ Split A/B</button>
               <button id="fullscreenBtn" class="fullscreen-btn" type="button" hidden>⛶ Fullscreen</button>
               <div class="device-switch">
                 <button type="button" class="active" data-device="desktop">Desktop</button>
@@ -4024,6 +5098,8 @@
     const FALLBACK_NAMES = ['Rocket Merge','Island Dash','Neon Blocks','Rune Park','Mystic Chef','Pixel Pirates','Dragon Bubbles','Turbo Farm','Candy Orbit','Monster Loop','Space Sushi','Jungle Wheels','Puzzle Panda','Sky Miner','Bubble Quest','Tiny Kingdom','Moon Runner','Idle Castle','Zombie Bakery','Ocean Match'];
     const FALLBACK_GENRES = ['Arcade','Puzzle','Casual','Action','Racing','Strategy','Runner','Merge','Idle','Adventure','Simulation','Board','Card','Sports','Word','Clicker'];
 
+    let splitOverlayOpen = false;
+
     const state = {
       platform:'yandex', device:'desktop', variant:'A', safe:false, readability:false, test:'normal', compare:false, presetType:'icon',
       title:'Cosmo Cats: Turbo Run', genre:'Аркада', rating:'4.8', envGames:[], manualGames:[],
@@ -4039,8 +5115,8 @@
     const platform = () => PLATFORMS.find(p => p.id === state.platform) || PLATFORMS[0];
 
     const refs = {
-      body: document.body, previewCard: $('#previewCard'), stage: $('#stage'), screen: $('#screen'), fullscreenBtn: $('#fullscreenBtn'), platformTabs: $('#platformTabs'), platformHint: $('#platformHint'),
-      title: $('#gameTitle'), genre: $('#genre'), rating: $('#rating'), iconInput: $('#iconInput'), bannerInput: $('#bannerInput'), screenshotsInput: $('#screenshotsInput'), videoInput: $('#videoInput'),
+      body: document.body, previewCard: $('#previewCard'), stage: $('#stage'), screen: $('#screen'), fullscreenBtn: $('#fullscreenBtn'), splitScreenBtn: $('#splitScreenBtn'), splitOverlay: $('#splitOverlay'), splitCloseBtn: $('#splitCloseBtn'), splitA: $('#splitA'), splitB: $('#splitB'), splitPlatformLabel: $('#splitPlatformLabel'), platformTabs: $('#platformTabs'), platformHint: $('#platformHint'),
+      title: $('#gameTitle'), genre: $('#genre'), rating: $('#rating'), iconInput: $('#iconInput'), bannerInput: $('#bannerInput'), screenshotsInput: $('#screenshotsInput'), videoInput: $('#videoInput'), competitorSearchInput: $('#competitorSearchInput'), competitorSearchBtn: $('#competitorSearchBtn'), competitorResults: $('#competitorResults'),
       iconThumb: $('#iconThumb'), bannerThumb: $('#bannerThumb'), screenshotsThumb: $('#screenshotsThumb'), videoThumb: $('#videoThumb'), strip: $('#screenshotsPreviewStrip'), qualityGrid: $('#qualityGrid'),
       presetGrid: $('#presetGrid'), compareGrid: $('#compareGrid')
     };
@@ -4050,11 +5126,90 @@
       refs.platformTabs.addEventListener('click', e => {
         const btn = e.target.closest('[data-platform-tab]');
         if (!btn) return;
+        hardCloseSplitScreen(e);
         setPlatform(btn.dataset.platformTab);
       });
     }
 
+    let competitorSearchResults = [];
+
+    function competitorIconUrl(item) {
+      return item.artworkUrl512 || item.artworkUrl100 || item.artworkUrl60 || '';
+    }
+
+    function competitorScreenshots(item) {
+      return [
+        ...(item.screenshotUrls || []),
+        ...(item.ipadScreenshotUrls || [])
+      ].filter(Boolean).slice(0, 10);
+    }
+
+    function competitorBannerUrl(item) {
+      const shots = competitorScreenshots(item);
+      return shots[0] || competitorIconUrl(item);
+    }
+
+    function renderCompetitorResults(results = competitorSearchResults) {
+      if (!refs.competitorResults) return;
+      if (!results.length) {
+        refs.competitorResults.innerHTML = `<div class="competitor-empty">Найди игру и нажми Use as B.</div>`;
+        return;
+      }
+      refs.competitorResults.innerHTML = results.map((item, i) => {
+        const icon = competitorIconUrl(item);
+        const title = escapeHtml(item.trackName || item.trackCensoredName || 'Unknown game');
+        const seller = escapeHtml(item.sellerName || item.artistName || 'Developer');
+        const rating = item.averageUserRating ? Number(item.averageUserRating).toFixed(1) : '—';
+        return `<article class="competitor-card">
+          <img src="${icon}" alt="${title}">
+          <div><strong>${title}</strong><span>${seller} · ${rating}★</span></div>
+          <button type="button" data-use-competitor="${i}">Use as B</button>
+        </article>`;
+      }).join('');
+    }
+
+    async function runCompetitorSearch() {
+      const term = refs.competitorSearchInput?.value || '';
+      if (!term.trim() || !refs.competitorResults) return;
+      refs.competitorResults.innerHTML = `<div class="competitor-loading">Searching…</div>`;
+      if (refs.competitorSearchBtn) {
+        refs.competitorSearchBtn.disabled = true;
+        refs.competitorSearchBtn.textContent = '...';
+      }
+      try {
+        competitorSearchResults = await searchAppStoreCompetitors(term);
+        renderCompetitorResults();
+      } finally {
+        if (refs.competitorSearchBtn) {
+          refs.competitorSearchBtn.disabled = false;
+          refs.competitorSearchBtn.textContent = 'Search';
+        }
+      }
+    }
+
+    function useCompetitorAsVariantB(index) {
+      const item = competitorSearchResults[index];
+      if (!item) return;
+      const shots = competitorScreenshots(item);
+      const icon = competitorIconUrl(item);
+      const banner = competitorBannerUrl(item);
+
+      state.variants.B.icon = icon;
+      state.variants.B.banner = banner;
+      state.variants.B.screenshots = shots;
+      state.variants.B.video = '';
+      state.variants.B.meta.icon = { width:0, height:0, size:0, name:item.trackName || 'Competitor icon', type:'remote' };
+      state.variants.B.meta.banner = { width:0, height:0, size:0, name:item.trackName || 'Competitor banner', type:'remote' };
+      state.variants.B.meta.screenshots = shots.map((_, i) => ({ width:0, height:0, size:0, name:`Remote screenshot ${i+1}`, type:'remote' }));
+      state.variants.B.meta.video = null;
+
+      state.variant = 'B';
+      $$('[data-variant]').forEach(b => b.classList.toggle('active', b.dataset.variant === 'B'));
+      renderAll();
+    }
+
     function setPlatform(id) {
+      if (!splitOverlayOpen) hardCloseSplitScreen();
       state.platform = id;
       if (id === 'yandex' || id === 'fb') {
         state.device = 'desktop';
@@ -4064,6 +5219,7 @@
       refs.body.dataset.platform = id;
       refs.platformHint.textContent = platform().name;
       $$('[data-platform-tab]').forEach(b => b.classList.toggle('active', b.dataset.platformTab === id));
+      if (splitOverlayOpen) syncSplitScreen();
       renderAll();
       syncFullscreenButton();
     }
@@ -4736,6 +5892,22 @@
       });
     }
 
+    function searchAppStoreCompetitors(term) {
+      return new Promise(resolve => {
+        const query = String(term || '').trim();
+        if (!query) return resolve([]);
+        const cb = `competitorSearch_${Date.now()}_${cbIndex++}`;
+        const script = document.createElement('script');
+        let done = false;
+        function finish(value) { if (done) return; done = true; delete window[cb]; script.remove(); resolve(value || []); }
+        window[cb] = data => finish(data && data.results ? data.results : []);
+        script.onerror = () => finish([]);
+        script.src = `https://itunes.apple.com/search?term=${encodeURIComponent(query)}&country=us&entity=software&limit=12&callback=${cb}`;
+        document.head.appendChild(script);
+        setTimeout(() => finish([]), 7000);
+      });
+    }
+
     function fromStore(seed, index, data) {
       const fb = fallbackGame(seed, index);
       if (!data) return fb;
@@ -4840,6 +6012,19 @@
       $('#envCount').addEventListener('change', randomizeEnvironment); $('#envGenre').addEventListener('change', randomizeEnvironment); $('#addCompetitorBtn').addEventListener('click', addCompetitor);
       $('#exportJsonBtn').addEventListener('click', exportJson); $('#exportReportBtn').addEventListener('click', exportReport); $('#printBtn').addEventListener('click', () => window.print());
       refs.fullscreenBtn?.addEventListener('click', togglePreviewFullscreen);
+      refs.splitScreenBtn?.addEventListener('click', openSplitScreen);
+      refs.competitorSearchBtn?.addEventListener('click', runCompetitorSearch);
+      refs.competitorSearchInput?.addEventListener('keydown', event => {
+        if (event.key === 'Enter') {
+          event.preventDefault();
+          runCompetitorSearch();
+        }
+      });
+      refs.competitorResults?.addEventListener('click', event => {
+        const btn = event.target.closest('[data-use-competitor]');
+        if (!btn) return;
+        useCompetitorAsVariantB(Number(btn.dataset.useCompetitor));
+      });
       refs.stage?.addEventListener('dblclick', () => {
         if (isPreviewFullscreenAvailable()) togglePreviewFullscreen();
       });
@@ -4891,7 +6076,131 @@
       setInterval(moveAmbient, 11800);
     }
 
-    initPlatformTabs(); bind(); initAmbientMotion(); setPlatform('yandex'); randomizeEnvironment(); renderAll(); syncFullscreenButton();
+    function ensureSplitOverlay() {
+      if (refs.splitOverlay) return;
+
+      const overlay = document.createElement('div');
+      overlay.id = 'splitOverlay';
+      overlay.className = 'split-overlay';
+      overlay.setAttribute('aria-hidden', 'true');
+      overlay.innerHTML = `
+        <div class="split-topbar">
+          <div>
+            <strong>Split Screen A/B</strong>
+            <span id="splitPlatformLabel">Live comparison</span>
+          </div>
+          <button id="splitCloseBtn" type="button">✕ Close</button>
+        </div>
+        <div class="split-grid">
+          <section class="split-pane">
+            <div class="split-label"><strong>Variant A</strong><span>Основная версия</span></div>
+            <div class="split-stage"><div id="splitA" class="split-screen"></div></div>
+          </section>
+          <section class="split-pane">
+            <div class="split-label"><strong>Variant B</strong><span>Альтернативная версия</span></div>
+            <div class="split-stage"><div id="splitB" class="split-screen"></div></div>
+          </section>
+        </div>`;
+
+      document.body.appendChild(overlay);
+      refs.splitOverlay = overlay;
+      refs.splitCloseBtn = overlay.querySelector('#splitCloseBtn');
+      refs.splitA = overlay.querySelector('#splitA');
+      refs.splitB = overlay.querySelector('#splitB');
+      refs.splitPlatformLabel = overlay.querySelector('#splitPlatformLabel');
+      refs.splitCloseBtn.addEventListener('click', closeSplitScreen);
+    }
+
+    function renderPlatformForVariant(variantName) {
+      const previousVariant = state.variant;
+      state.variant = variantName;
+
+      let html = '';
+      if (state.platform === 'appstore') html = state.device === 'mobile' ? renderAppStoreMobile() : renderAppStore();
+      else if (state.platform === 'gplay') html = state.device === 'mobile' ? renderGooglePlayMobile() : renderGooglePlay();
+      else if (state.platform === 'yandex') html = renderYandex();
+      else if (state.platform === 'fb') html = renderFacebook();
+      else html = renderCatalog();
+
+      state.variant = previousVariant;
+      return html;
+    }
+
+    function syncSplitScreen() {
+      if (!splitOverlayOpen || !refs.splitOverlay) return;
+      refs.splitA.innerHTML = renderPlatformForVariant('A');
+      refs.splitB.innerHTML = renderPlatformForVariant('B');
+      refs.splitPlatformLabel.textContent = `${platform().name} · ${state.device === 'mobile' ? 'Mobile' : 'Desktop'} · live`;
+      refs.splitOverlay.dataset.platform = state.platform;
+      refs.splitOverlay.dataset.device = state.device;
+    }
+
+    function openSplitScreen(event) {
+      if (event) {
+        event.preventDefault();
+        event.stopPropagation();
+      }
+      ensureSplitOverlay();
+      splitOverlayOpen = true;
+      refs.splitOverlay.classList.add('active');
+      refs.splitOverlay.setAttribute('aria-hidden', 'false');
+      refs.body.classList.add('is-split-open');
+      syncSplitScreen();
+    }
+
+    function hardCloseSplitScreen(event) {
+      if (event) {
+        event.preventDefault?.();
+        event.stopPropagation?.();
+      }
+      splitOverlayOpen = false;
+      refs.body.classList.remove('is-split-open');
+      document.querySelectorAll('#splitOverlay, .split-overlay').forEach(el => {
+        el.classList.remove('active');
+        el.setAttribute('aria-hidden', 'true');
+        el.remove();
+      });
+      refs.splitOverlay = null;
+      refs.splitCloseBtn = null;
+      refs.splitA = null;
+      refs.splitB = null;
+      refs.splitPlatformLabel = null;
+    }
+
+    function closeSplitScreen(event) {
+      hardCloseSplitScreen(event);
+    }
+
+    const originalRenderAll = renderAll;
+    renderAll = function renderAllWithSplit() {
+      originalRenderAll();
+      syncSplitScreen();
+    };
+
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape' && splitOverlayOpen) closeSplitScreen(event);
+    });
+
+    function initIntroOverlay() {
+      const intro = document.getElementById('introOverlay');
+      if (!intro) return;
+      let done = false;
+      function finishIntro() {
+        if (done) return;
+        done = true;
+        intro.classList.add('is-exiting');
+        setTimeout(() => intro.classList.add('is-hidden'), 1180);
+      }
+      intro.addEventListener('dblclick', finishIntro);
+      setTimeout(() => {
+        if (!done) {
+          done = true;
+          intro.classList.add('is-hidden');
+        }
+      }, 9000);
+    }
+
+    initPlatformTabs(); bind(); initAmbientMotion(); initIntroOverlay(); setPlatform('yandex'); randomizeEnvironment(); renderAll(); syncFullscreenButton();
   </script>
 </body>
 </html>
