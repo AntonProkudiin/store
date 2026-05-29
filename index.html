@@ -4471,60 +4471,666 @@
     }
   
 
-    /* Microsoft Store desktop preview */
-    [data-platform="mstore"] { --accent:#0078d4; --accent-2:#00bcf2; --platform-bg:#f6f6f6; --platform-panel:#ffffff; --platform-soft:rgba(0,120,212,.10); --platform-text:#1f1f1f; --platform-muted:#646464; --platform-line:rgba(0,0,0,.10); }
-    [data-platform="mstore"] .device-switch { display:none !important; }
-    [data-platform="mstore"] .app { width:min(1840px, calc(100vw - 72px)) !important; }
-    [data-platform="mstore"] .workspace { grid-template-columns:340px minmax(0, 1fr) !important; }
-    [data-platform="mstore"] .stage { min-height:780px !important; }
-    [data-platform="mstore"] .preview-card { max-width:none !important; }
+/* === FIX: Microsoft Store dark web preview rebuild, full-width === */
+[data-platform="mstore"] {
+  --platform-bg:#0f0f10 !important;
+  --platform-panel:#1b1b1c !important;
+  --platform-text:#f5f5f5 !important;
+  --platform-muted:#a7a7a7 !important;
+  --platform-line:rgba(255,255,255,.10) !important;
+  --platform-soft:rgba(255,255,255,.08) !important;
+}
 
-    .ms-ref-screen { min-height:inherit; height:100%; display:grid; grid-template-columns:82px minmax(0,1fr); background:#f6f6f6; color:#1f1f1f; font-family:"Segoe UI", var(--font); overflow:hidden; }
-    .ms-ref-sidebar { background:#fbfbfb; border-right:1px solid #e7e7e7; display:grid; grid-template-rows:auto 1fr auto; justify-items:center; padding:14px 0; }
-    .ms-ref-store-icon { width:28px; height:28px; border-radius:7px; display:grid; place-items:center; background:linear-gradient(135deg,#0078d4,#00bcf2); color:#fff; font-weight:900; }
-    .ms-ref-nav, .ms-ref-bottom { display:grid; gap:10px; margin-top:24px; }
-    .ms-ref-nav span, .ms-ref-bottom span { width:58px; height:54px; border-radius:12px; display:grid; place-items:center; gap:3px; color:#646464; font-size:18px; position:relative; }
-    .ms-ref-nav span small, .ms-ref-bottom span small { display:block; font-size:10px; font-weight:600; }
-    .ms-ref-nav span.active { background:#fff; color:#0078d4; box-shadow:0 1px 4px rgba(0,0,0,.08); }
-    .ms-ref-nav span.active::before { content:""; position:absolute; left:0; top:10px; bottom:10px; width:4px; border-radius:999px; background:#0078d4; }
-    .ms-ref-main { min-width:0; overflow:hidden; }
-    .ms-ref-topbar { height:54px; display:grid; grid-template-columns:220px minmax(360px,680px) 1fr auto; gap:16px; align-items:center; padding:0 24px; }
-    .ms-ref-title { color:#696969; font-size:15px; font-weight:600; }
-    .ms-ref-search { height:36px; border:1px solid #d2d2d2; border-radius:3px; background:#fff; display:flex; align-items:center; justify-content:space-between; padding:0 12px; color:#686868; }
-    .ms-ref-profile { justify-self:end; width:34px; height:34px; border-radius:50%; background:#ddd; display:grid; place-items:center; font-size:12px; font-weight:800; }
-    .ms-ref-window { color:#999; letter-spacing:14px; white-space:nowrap; }
-    .ms-ref-page { padding:14px 40px 42px; overflow:hidden; }
-    .ms-ref-hero-grid { display:grid; grid-template-columns:1.55fr 1fr; gap:14px; height:590px; }
-    .ms-ref-hero-main, .ms-ref-promo-large, .ms-ref-promo-small { position:relative; border-radius:8px; overflow:hidden; background:#222; box-shadow:0 1px 2px rgba(0,0,0,.14); }
-    .ms-ref-hero-main::after, .ms-ref-promo-large::after, .ms-ref-promo-small::after { content:""; position:absolute; inset:0; background:linear-gradient(90deg,rgba(80,0,0,.62),transparent 62%); z-index:2; pointer-events:none; }
-    .ms-ref-hero-media, .ms-ref-promo-media { position:absolute; inset:0; width:100%; height:100%; border-radius:inherit; }
-    .ms-ref-hero-copy { position:absolute; left:42px; bottom:150px; z-index:3; color:#fff; max-width:430px; }
-    .ms-ref-price { display:inline-flex; padding:7px 10px; border-radius:4px; background:rgba(0,0,0,.45); font-size:14px; }
-    .ms-ref-hero-copy h2 { margin:18px 0 8px; font-size:36px; line-height:1.04; letter-spacing:-.045em; }
-    .ms-ref-hero-copy p { margin:0 0 24px; font-size:16px; opacity:.86; }
-    .ms-ref-hero-copy button { height:42px; border:0; border-radius:6px; background:rgba(255,255,255,.18); color:#fff; padding:0 24px; font-weight:700; }
-    .ms-ref-dots { position:absolute; left:50%; bottom:22px; transform:translateX(-50%); z-index:4; color:rgba(255,255,255,.68); letter-spacing:10px; }
-    .ms-ref-hero-side { display:grid; grid-template-rows:1fr 1fr; gap:14px; min-width:0; }
-    .ms-ref-promo-large h3 { position:absolute; left:36px; top:43%; z-index:3; color:#fff; margin:0; font-size:28px; font-weight:650; }
-    .ms-ref-promo-row { display:grid; grid-template-columns:1fr 1fr; gap:14px; min-width:0; }
-    .ms-ref-promo-small h3 { position:absolute; left:18px; bottom:18px; z-index:3; color:#fff; margin:0; font-size:17px; font-weight:650; }
-    .ms-ref-chips { display:flex; gap:10px; margin:28px 0 26px; overflow:hidden; }
-    .ms-ref-chips span { height:36px; border:1px solid #d6d6d6; border-radius:9px; background:#fff; padding:0 18px; display:flex; align-items:center; white-space:nowrap; color:#333; font-size:14px; }
-    .ms-ref-section-head { display:flex; align-items:end; justify-content:space-between; gap:14px; margin:0 0 14px; }
-    .ms-ref-section-head h3 { margin:0; font-size:24px; font-weight:650; letter-spacing:-.02em; }
-    .ms-ref-section-head span { color:#6b7280; font-size:12px; font-weight:750; }
-    .ms-ref-card-row { display:flex; gap:16px; overflow:hidden; padding-bottom:8px; }
-    .ms-ref-game-card { flex:0 0 178px; width:178px; display:block; min-width:0; color:#fff; position:relative; border-radius:8px; overflow:hidden; background:#ddd; box-shadow:0 1px 2px rgba(0,0,0,.14); }
-    .ms-ref-cover-art { width:100%; aspect-ratio:1440/2160; border-radius:8px; overflow:hidden; background:#111; }
-    .ms-ref-cover-art .asset-frame, .ms-ref-cover-media { width:100%; height:100%; border-radius:inherit; }
-    .ms-ref-game-card::after { content:""; position:absolute; inset:45% 0 0; background:linear-gradient(180deg,transparent,rgba(0,0,0,.78)); z-index:2; pointer-events:none; }
-    .ms-ref-game-card strong { position:absolute; left:12px; right:12px; bottom:35px; z-index:3; font-size:15px; line-height:1.12; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
-    .ms-ref-game-card span { position:absolute; left:12px; right:12px; bottom:12px; z-index:3; color:#e7e7e7; font-size:12px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
-    .split-overlay[data-platform="mstore"] .ms-ref-screen { width:100% !important; height:100% !important; min-height:100% !important; }
-    .split-overlay[data-platform="mstore"] .ms-ref-page { padding:10px 22px 32px !important; }
-    .split-overlay[data-platform="mstore"] .ms-ref-hero-grid { height:48vh !important; }
+[data-platform="mstore"] .stage,
+[data-platform="mstore"] .screen {
+  background:#0f0f10 !important;
+}
 
-  </style>
+[data-platform="mstore"] .stage {
+  min-height: 780px !important;
+}
+
+.ms-ref-screen {
+  width: 100% !important;
+  min-width: 0 !important;
+  max-width: none !important;
+  min-height: inherit !important;
+  height: 100% !important;
+  display: block !important;
+  grid-template-columns: none !important;
+  background: #0f0f10 !important;
+  color: #f5f5f5 !important;
+  font-family: "Segoe UI", var(--font) !important;
+  overflow: hidden !important;
+}
+
+.ms-ref-sidebar,
+.ms-ref-chips,
+.ms-ref-price,
+.ms-ref-window,
+.ms-ref-profile,
+.ms-ref-title {
+  display: none !important;
+}
+
+.ms-ref-main {
+  width: 100% !important;
+  min-width: 0 !important;
+  height: 100% !important;
+  min-height: inherit !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  background: #0f0f10 !important;
+}
+
+.ms-ref-topbar {
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 50 !important;
+  width: 100% !important;
+  height: 64px !important;
+  display: grid !important;
+  grid-template-columns: auto auto minmax(260px, 1fr) auto auto auto !important;
+  gap: 20px !important;
+  align-items: center !important;
+  padding: 0 clamp(22px, 4vw, 64px) !important;
+  background: rgba(0,0,0,.92) !important;
+  border-bottom: 1px solid rgba(255,255,255,.08) !important;
+  backdrop-filter: blur(18px) saturate(1.15) !important;
+  -webkit-backdrop-filter: blur(18px) saturate(1.15) !important;
+  box-sizing: border-box !important;
+}
+
+.ms-ref-brand {
+  display: flex !important;
+  align-items: center !important;
+  gap: 9px !important;
+  color: #fff !important;
+  white-space: nowrap !important;
+  font-size: 16px !important;
+  min-width: max-content !important;
+}
+
+.ms-ref-brand strong,
+.ms-ref-brand b {
+  font-weight: 650 !important;
+}
+
+.ms-ref-brand em {
+  display: block !important;
+  width: 1px !important;
+  height: 26px !important;
+  background: rgba(255,255,255,.55) !important;
+  margin: 0 4px !important;
+}
+
+.ms-ref-logo {
+  width: 22px !important;
+  height: 22px !important;
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  grid-template-rows: 1fr 1fr !important;
+  gap: 2px !important;
+}
+
+.ms-ref-logo i:nth-child(1){background:#f35325!important}
+.ms-ref-logo i:nth-child(2){background:#81bc06!important}
+.ms-ref-logo i:nth-child(3){background:#05a6f0!important}
+.ms-ref-logo i:nth-child(4){background:#ffba08!important}
+
+.ms-ref-tabs {
+  display: flex !important;
+  align-items: center !important;
+  gap: 28px !important;
+  color: #9b9b9b !important;
+  font-size: 13px !important;
+  font-weight: 650 !important;
+  white-space: nowrap !important;
+}
+
+.ms-ref-tabs span {
+  height: 64px !important;
+  display: flex !important;
+  align-items: center !important;
+  border-bottom: 2px solid transparent !important;
+}
+
+.ms-ref-tabs .active {
+  color: #eaf5ff !important;
+  border-bottom-color: #55b3ff !important;
+}
+
+.ms-ref-search {
+  justify-self: end !important;
+  width: min(650px, 100%) !important;
+  height: 38px !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  border: 1px solid rgba(255,255,255,.22) !important;
+  border-radius: 999px !important;
+  background: #1e1e23 !important;
+  color: #bdbdc2 !important;
+  padding: 0 15px !important;
+  font-size: 12px !important;
+  min-width: 0 !important;
+  box-sizing: border-box !important;
+}
+
+.ms-ref-search p {
+  margin: 0 !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+
+.ms-ref-install {
+  height: 38px !important;
+  border: 1px solid rgba(255,255,255,.18) !important;
+  border-radius: 999px !important;
+  background: #242428 !important;
+  color: #fff !important;
+  padding: 0 16px !important;
+  font-size: 12px !important;
+  font-weight: 800 !important;
+  white-space: nowrap !important;
+}
+
+.ms-ref-login {
+  color: #fff !important;
+  font-size: 13px !important;
+  font-weight: 750 !important;
+  white-space: nowrap !important;
+}
+
+.ms-ref-user {
+  width: 34px !important;
+  height: 34px !important;
+  display: grid !important;
+  place-items: center !important;
+  border-radius: 50% !important;
+  background: #2c2c30 !important;
+  color: #fff !important;
+}
+
+.ms-ref-page {
+  width: min(1600px, calc(100% - 48px)) !important;
+  max-width: none !important;
+  margin: 0 auto !important;
+  padding: 28px 0 72px !important;
+  overflow: visible !important;
+  box-sizing: border-box !important;
+}
+
+.ms-ref-hero-grid {
+  width: 100% !important;
+  display: grid !important;
+  grid-template-columns: minmax(0, 1.55fr) minmax(360px, .95fr) !important;
+  gap: 16px !important;
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  margin-bottom: 28px !important;
+}
+
+.ms-ref-hero-side {
+  display: grid !important;
+  grid-template-rows: auto auto !important;
+  gap: 16px !important;
+  min-width: 0 !important;
+}
+
+.ms-ref-promo-row {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: 16px !important;
+  min-width: 0 !important;
+}
+
+.ms-ref-hero-main,
+.ms-ref-promo-large,
+.ms-ref-promo-small {
+  position: relative !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  height: auto !important;
+  min-height: 0 !important;
+  border-radius: 12px !important;
+  overflow: hidden !important;
+  background: #202024 !important;
+  box-shadow: 0 1px 2px rgba(0,0,0,.55) !important;
+  aspect-ratio: 16 / 9 !important;
+}
+
+.ms-ref-hero-main::after,
+.ms-ref-promo-large::after,
+.ms-ref-promo-small::after {
+  content: "" !important;
+  position: absolute !important;
+  inset: 0 !important;
+  z-index: 2 !important;
+  pointer-events: none !important;
+  background: linear-gradient(90deg, rgba(0,0,0,.64), rgba(0,0,0,.18) 52%, rgba(0,0,0,.06)) !important;
+}
+
+.ms-ref-hero-media,
+.ms-ref-promo-media,
+.ms-ref-hero-media.asset-frame,
+.ms-ref-promo-media.asset-frame {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  border-radius: inherit !important;
+  overflow: hidden !important;
+  background: #202024 !important;
+}
+
+.ms-ref-hero-media img,
+.ms-ref-promo-media img,
+.ms-ref-hero-media video,
+.ms-ref-promo-media video {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center !important;
+}
+
+.ms-ref-hero-copy {
+  position: absolute !important;
+  left: 42px !important;
+  bottom: 58px !important;
+  z-index: 4 !important;
+  color: #fff !important;
+  max-width: 430px !important;
+}
+
+.ms-ref-hero-copy h2 {
+  margin: 0 0 10px !important;
+  font-size: clamp(26px, 3vw, 46px) !important;
+  line-height: 1.02 !important;
+  letter-spacing: -.055em !important;
+  color: #fff !important;
+}
+
+.ms-ref-hero-copy p {
+  margin: 0 0 18px !important;
+  color: rgba(255,255,255,.78) !important;
+}
+
+.ms-ref-hero-copy button {
+  height: 42px !important;
+  border: 0 !important;
+  border-radius: 6px !important;
+  padding: 0 24px !important;
+  background: rgba(255,255,255,.18) !important;
+  color: #fff !important;
+  font-weight: 850 !important;
+}
+
+.ms-ref-dots {
+  position: absolute !important;
+  bottom: 18px !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  z-index: 5 !important;
+  color: rgba(255,255,255,.55) !important;
+  letter-spacing: 10px !important;
+}
+
+.ms-ref-promo-large h3,
+.ms-ref-promo-small h3 {
+  position: absolute !important;
+  left: 24px !important;
+  right: 24px !important;
+  bottom: 24px !important;
+  z-index: 4 !important;
+  margin: 0 !important;
+  color: #fff !important;
+  font-size: clamp(18px, 2vw, 32px) !important;
+  line-height: 1.08 !important;
+  letter-spacing: -.04em !important;
+  text-shadow: 0 2px 12px rgba(0,0,0,.55) !important;
+}
+
+.ms-ref-promo-small h3 {
+  font-size: 18px !important;
+}
+
+.ms-ref-list-grid {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: 16px !important;
+  margin: 0 0 32px !important;
+}
+
+.ms-ref-list-panel {
+  min-width: 0 !important;
+  border-radius: 12px !important;
+  background: #1b1b1e !important;
+  border: 1px solid rgba(255,255,255,.08) !important;
+  padding: 16px !important;
+}
+
+.ms-ref-panel-head {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  margin-bottom: 12px !important;
+}
+
+.ms-ref-panel-head h3 {
+  margin: 0 !important;
+  color: #fff !important;
+  font-size: 20px !important;
+  letter-spacing: -.035em !important;
+}
+
+.ms-ref-panel-head span {
+  color: #9b9b9b !important;
+}
+
+.ms-ref-list-two {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: 10px 18px !important;
+}
+
+.ms-ref-list-item {
+  min-width: 0 !important;
+  display: grid !important;
+  grid-template-columns: 56px minmax(0, 1fr) !important;
+  gap: 12px !important;
+  align-items: center !important;
+}
+
+.ms-ref-list-icon,
+.ms-ref-list-icon.asset-frame {
+  width: 56px !important;
+  height: 56px !important;
+  border-radius: 10px !important;
+  overflow: hidden !important;
+  background: #2a2a2f !important;
+}
+
+.ms-ref-list-icon img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+}
+
+.ms-ref-list-copy {
+  min-width: 0 !important;
+}
+
+.ms-ref-list-copy strong,
+.ms-ref-list-copy span,
+.ms-ref-list-copy small {
+  display: block !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+
+.ms-ref-list-copy strong {
+  color: #fff !important;
+  font-size: 14px !important;
+  line-height: 1.2 !important;
+}
+
+.ms-ref-list-copy span,
+.ms-ref-list-copy small {
+  color: #a7a7a7 !important;
+  font-size: 12px !important;
+  margin-top: 3px !important;
+}
+
+.ms-ref-section-head,
+.ms-ref-events-title {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: end !important;
+  gap: 12px !important;
+  margin: 28px 0 14px !important;
+  color: #fff !important;
+}
+
+.ms-ref-section-head h3 {
+  margin: 0 !important;
+  color: #fff !important;
+  font-size: 24px !important;
+  letter-spacing: -.04em !important;
+}
+
+.ms-ref-section-head span {
+  color: #8f8f95 !important;
+  font-size: 12px !important;
+  font-weight: 800 !important;
+}
+
+.ms-ref-card-row {
+  display: flex !important;
+  gap: 16px !important;
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+  padding: 2px 2px 22px !important;
+  scrollbar-width: thin !important;
+}
+
+.ms-ref-game-card {
+  flex: 0 0 190px !important;
+  width: 190px !important;
+  min-width: 190px !important;
+  max-width: 190px !important;
+  display: block !important;
+  color: #fff !important;
+  text-decoration: none !important;
+}
+
+.ms-ref-cover-art {
+  width: 190px !important;
+  aspect-ratio: 1440 / 2160 !important;
+  height: auto !important;
+  border-radius: 12px !important;
+  overflow: hidden !important;
+  background: #222228 !important;
+  box-shadow: 0 16px 34px rgba(0,0,0,.35) !important;
+  margin-bottom: 10px !important;
+}
+
+.ms-ref-cover-media,
+.ms-ref-cover-media.asset-frame {
+  width: 100% !important;
+  height: 100% !important;
+  border-radius: inherit !important;
+  overflow: hidden !important;
+  background: #222228 !important;
+}
+
+.ms-ref-cover-media img,
+.ms-ref-cover-media video {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center !important;
+}
+
+.ms-ref-game-card strong,
+.ms-ref-game-card span {
+  display: block !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+
+.ms-ref-game-card strong {
+  color: #fff !important;
+  font-size: 14px !important;
+  line-height: 1.2 !important;
+}
+
+.ms-ref-game-card span {
+  color: #9b9b9b !important;
+  font-size: 12px !important;
+  margin-top: 4px !important;
+}
+
+.ms-ref-events-row {
+  display: grid !important;
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  gap: 16px !important;
+}
+
+.ms-ref-event-card {
+  min-width: 0 !important;
+  border-radius: 12px !important;
+  background: #1b1b1e !important;
+  overflow: hidden !important;
+  border: 1px solid rgba(255,255,255,.08) !important;
+}
+
+.ms-ref-event-media,
+.ms-ref-event-media.asset-frame {
+  width: 100% !important;
+  aspect-ratio: 16 / 9 !important;
+  height: auto !important;
+  border-radius: 0 !important;
+}
+
+.ms-ref-event-info {
+  display: grid !important;
+  grid-template-columns: 42px minmax(0, 1fr) !important;
+  gap: 10px !important;
+  align-items: center !important;
+  padding: 10px !important;
+}
+
+.ms-ref-event-icon,
+.ms-ref-event-icon.asset-frame {
+  width: 42px !important;
+  height: 42px !important;
+  border-radius: 8px !important;
+}
+
+.ms-ref-event-info strong,
+.ms-ref-event-info span {
+  display: block !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+
+.ms-ref-event-info strong {
+  color: #fff !important;
+  font-size: 13px !important;
+}
+
+.ms-ref-event-info span {
+  color: #9b9b9b !important;
+  font-size: 11px !important;
+}
+
+#previewCard:fullscreen .ms-ref-screen,
+#previewCard:-webkit-full-screen .ms-ref-screen {
+  width: 100vw !important;
+  height: 100vh !important;
+  min-height: 100vh !important;
+}
+
+#previewCard:fullscreen .ms-ref-main,
+#previewCard:-webkit-full-screen .ms-ref-main {
+  height: 100vh !important;
+  overflow-y: auto !important;
+}
+
+.split-overlay[data-platform="mstore"] .ms-ref-screen {
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 100% !important;
+}
+
+.split-overlay[data-platform="mstore"] .ms-ref-page {
+  width: calc(100% - 28px) !important;
+  padding-top: 16px !important;
+}
+
+.split-overlay[data-platform="mstore"] .ms-ref-topbar {
+  padding: 0 20px !important;
+}
+
+.split-overlay[data-platform="mstore"] .ms-ref-hero-grid {
+  grid-template-columns: minmax(0, 1.3fr) minmax(270px, .85fr) !important;
+}
+
+@media (max-width: 1180px) {
+  .ms-ref-topbar {
+    grid-template-columns: auto minmax(180px, 1fr) auto !important;
+  }
+  .ms-ref-tabs,
+  .ms-ref-install,
+  .ms-ref-login {
+    display: none !important;
+  }
+  .ms-ref-hero-grid,
+  .ms-ref-list-grid,
+  .ms-ref-events-row {
+    grid-template-columns: 1fr !important;
+  }
+  .ms-ref-promo-row {
+    grid-template-columns: 1fr 1fr !important;
+  }
+}
+
+
+
+/* === Microsoft Store restore: make platform visible + desktop only === */
+[data-platform="mstore"] .device-switch {
+  display: none !important;
+}
+
+[data-platform="mstore"] .screen {
+  background: #0f0f10 !important;
+}
+
+.ms-ref-screen,
+.ms-ref-screen * {
+  box-sizing: border-box !important;
+}
+
+.ms-ref-screen {
+  width: 100% !important;
+  min-height: inherit !important;
+  height: 100% !important;
+  display: block !important;
+  background: #0f0f10 !important;
+  color: #f5f5f5 !important;
+  overflow: hidden !important;
+}
+
+.ms-ref-main {
+  width: 100% !important;
+  height: 100% !important;
+  min-height: inherit !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+}
+
+.ms-ref-topbar {
+  width: 100% !important;
+}
+
+.ms-ref-cover-art {
+  aspect-ratio: 1440 / 2160 !important;
+}
+
+.ms-ref-cover-art .asset-frame,
+.ms-ref-cover-art img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+}
+
+</style>
 </head>
 <body data-platform="yandex" data-safe="false" data-readability="false" data-test="normal" data-compare="false">
   <main class="app">
@@ -4712,7 +5318,7 @@
       { id:'fb', name:'FB Games', mark:'f', kind:'fb', search:'Поиск игр' },
       { id:'appstore', name:'App Store', mark:'A', kind:'store', search:'Search apps, games, stories' },
       { id:'gplay', name:'Google Play', mark:'▶', kind:'store', search:'Search for apps & games' },
-      { id:'mstore', name:'Microsoft Store', mark:'▦', kind:'mstore', search:'Search apps, games, and more' }
+      { id:'mstore', name:'Microsoft Store', mark:'⊞', kind:'mstore', search:'Search games, apps, movies, and more' }
     ];
 
     const REAL_GAMES = [
@@ -5331,78 +5937,129 @@
     }
 
 
-    function msStoreArt(game, index = 0) {
+    function msStoreCover(game, index = 0) {
       if (!game) return '';
-      return (game.screenshots && game.screenshots[index]) || game.banner || game.icon || '';
+      const shots = Array.isArray(game.screenshots) ? game.screenshots.filter(Boolean) : [];
+      // Важно: cover-слоты Microsoft Store имитируют 1440×2160 и не используют banner.
+      // Banner остаётся только для hero/promo 16:9.
+      return shots[index] || shots[0] || game.icon || '';
     }
 
     function renderMicrosoftStore() {
       const a = active();
-      const env = state.envGames;
-      const ownHero = a.banner || a.screenshots[0] || a.icon;
-      const ownCover = a.screenshots[0] || a.banner || a.icon;
-      const heroSide = env.slice(0, 3);
-      const cards = [{ title: state.title, genre: state.genre, rating: state.rating, icon: a.icon, banner: a.banner, screenshots: a.screenshots, own: true }, ...env];
-      const chipNames = ['🎁 Free Games','🟢 Game Pass','🔫 Shooter','🐎 Simulation','🕹 Action & Adventure','🗡 Role-playing','♟ Strategy','🧩 Puzzle','⚽ Sports','🃏 Card & Board'];
+      const env = state.envGames || [];
+      const heroMedia = a.banner || a.screenshots?.[0] || a.icon;
+      const ownCover = msStoreCover({ screenshots: a.screenshots, icon: a.icon }) || a.icon;
+      const promoA = env[0] || {};
+      const promoB = env[1] || {};
+      const promoC = env[2] || {};
+      const listA = [
+        { title: state.title, genre: state.genre, rating: state.rating, icon: a.icon, screenshots: a.screenshots, own: true },
+        ...env.slice(0, 7)
+      ];
+      const listB = env.slice(7, 15);
+      const cardGames = [
+        { title: state.title, genre: state.genre, rating: state.rating, icon: a.icon, screenshots: a.screenshots, own: true },
+        ...env
+      ].slice(0, 18);
+      const events = env.slice(3, 7);
+
+      const listItem = (g, i) => {
+        const icon = g.own ? a.icon : (g.icon || msStoreCover(g, i));
+        return `<article class="ms-ref-list-item">
+          ${assetFrame(icon, 'ICON', 'ms-ref-list-icon')}
+          <div class="ms-ref-list-copy">
+            <strong>${escapeHtml(g.title || 'Game')}</strong>
+            <span>${escapeHtml(g.genre || 'Game')}</span>
+            <small>${escapeHtml(g.rating || state.rating || '4.8')} ★</small>
+          </div>
+        </article>`;
+      };
+
+      const coverCard = (g, i) => {
+        const cover = g.own ? ownCover : msStoreCover(g, i);
+        return `<a class="ms-ref-game-card" href="${g.own ? '#' : envLink(g)}" ${g.own ? '' : 'target="_blank" rel="noopener noreferrer"'}>
+          <div class="ms-ref-cover-art">${assetFrame(cover, '1440×2160', 'ms-ref-cover-media')}</div>
+          <strong>${escapeHtml(g.title || 'Game')}</strong>
+          <span>${escapeHtml(g.genre || 'Game')} · ${escapeHtml(g.rating || '4.8')} ★</span>
+        </a>`;
+      };
+
+      const eventCard = (g, i) => {
+        return `<article class="ms-ref-event-card">
+          ${assetFrame(g.banner || g.screenshots?.[0] || g.icon, 'EVENT', 'ms-ref-event-media')}
+          <div class="ms-ref-event-info">
+            ${assetFrame(g.icon || msStoreCover(g, i), 'ICON', 'ms-ref-event-icon')}
+            <div><strong>${escapeHtml(g.title || 'Game Event')}</strong><span>${escapeHtml(g.genre || 'Game')}</span></div>
+          </div>
+        </article>`;
+      };
+
       return `<div class="ms-ref-screen">
-        <aside class="ms-ref-sidebar">
-          <div class="ms-ref-store-icon">▦</div>
-          <nav class="ms-ref-nav">
-            <span>⌂<small>Home</small></span>
-            <span>▦<small>Apps</small></span>
-            <span class="active">🎮<small>Gaming</small></span>
-            <span>✧<small>AI Hub</small></span>
-            <span>✎<small>Themes</small></span>
-          </nav>
-          <nav class="ms-ref-bottom">
-            <span>☁<small>Downloads</small></span>
-            <span>▥<small>Library</small></span>
-          </nav>
-        </aside>
         <main class="ms-ref-main">
           <header class="ms-ref-topbar">
-            <div class="ms-ref-title">Microsoft Store</div>
-            <div class="ms-ref-search"><span>Search apps, games, and more</span><b>⌕</b></div>
-            <div class="ms-ref-profile">RA</div>
-            <div class="ms-ref-window">− □ ×</div>
+            <div class="ms-ref-brand">
+              <span class="ms-ref-logo"><i></i><i></i><i></i><i></i></span>
+              <strong>Microsoft</strong><em></em><b>Store</b>
+            </div>
+            <nav class="ms-ref-tabs"><span>Главная</span><span class="active">Игры</span><span>Приложения</span><span>Фильмы и ТВ</span></nav>
+            <div class="ms-ref-search"><span>⌕</span><p>${platform().search}</p></div>
+            <button type="button" class="ms-ref-install">Получить приложение Store</button>
+            <div class="ms-ref-login">Войти</div>
+            <div class="ms-ref-user">👤</div>
           </header>
+
           <section class="ms-ref-page">
             <div class="ms-ref-hero-grid">
               <article class="ms-ref-hero-main">
-                ${assetFrame(ownHero, 'HERO', 'ms-ref-hero-media')}
+                ${assetFrame(heroMedia, 'HERO', 'ms-ref-hero-media')}
                 <div class="ms-ref-hero-copy">
-                  <span class="ms-ref-price">$19.99</span>
                   <h2>${escapeHtml(state.title)}</h2>
-                  <p>${escapeHtml(state.genre)} · PC game preview</p>
-                  <button type="button">See details</button>
+                  <p>${escapeHtml(state.genre)} · preview listing</p>
+                  <button type="button">Подробнее</button>
                 </div>
                 <div class="ms-ref-dots">•••••</div>
               </article>
+
               <div class="ms-ref-hero-side">
                 <article class="ms-ref-promo-large">
-                  ${assetFrame(msStoreArt(heroSide[0]) || ownHero, 'PROMO', 'ms-ref-promo-media')}
-                  <h3>Great New Games</h3>
+                  ${assetFrame(promoA.banner || promoA.screenshots?.[0] || promoA.icon, 'PROMO', 'ms-ref-promo-media')}
+                  <h3>Войнушки и приключения</h3>
                 </article>
                 <div class="ms-ref-promo-row">
-                  ${heroSide.slice(1, 3).map(g => `<article class="ms-ref-promo-small">${assetFrame(msStoreArt(g), 'GAME', 'ms-ref-promo-media')}<h3>${escapeHtml(g.title)}</h3></article>`).join('')}
+                  <article class="ms-ref-promo-small">
+                    ${assetFrame(promoB.banner || promoB.screenshots?.[0] || promoB.icon, 'PROMO', 'ms-ref-promo-media')}
+                    <h3>${escapeHtml(promoB.title || 'New Games')}</h3>
+                  </article>
+                  <article class="ms-ref-promo-small">
+                    ${assetFrame(promoC.banner || promoC.screenshots?.[0] || promoC.icon, 'PROMO', 'ms-ref-promo-media')}
+                    <h3>${escapeHtml(promoC.title || 'Merge to Restore')}</h3>
+                  </article>
                 </div>
               </div>
             </div>
 
-            <div class="ms-ref-chips">${chipNames.map(x => `<span>${x}</span>`).join('')}</div>
-
-            <div class="ms-ref-section-head"><h3>Best selling games</h3><span>1440×2160 cover tiles</span></div>
-            <div class="ms-ref-card-row">
-              ${cards.slice(0, 18).map((g, i) => `<a class="ms-ref-game-card" href="${g.own ? '#' : envLink(g)}" ${g.own ? '' : 'target="_blank" rel="noopener noreferrer"'}>
-                <div class="ms-ref-cover-art">${assetFrame(i === 0 ? ownCover : msStoreArt(g), '1440×2160', 'ms-ref-cover-media')}</div>
-                <strong>${escapeHtml(g.title)}</strong>
-                <span>${escapeHtml(g.genre)} · ${g.rating || '4.8'}★</span>
-              </a>`).join('')}
+            <div class="ms-ref-list-grid">
+              <section class="ms-ref-list-panel">
+                <div class="ms-ref-panel-head"><h3>Популярные игры</h3><span>›</span></div>
+                <div class="ms-ref-list-two">${listA.slice(0, 8).map(listItem).join('')}</div>
+              </section>
+              <section class="ms-ref-list-panel">
+                <div class="ms-ref-panel-head"><h3>Популярные приложения</h3><span>›</span></div>
+                <div class="ms-ref-list-two">${listB.slice(0, 8).map(listItem).join('')}</div>
+              </section>
             </div>
+
+            <div class="ms-ref-section-head"><h3>Бестселлеры среди игр</h3><span>Показать все ›</span></div>
+            <div class="ms-ref-card-row">${cardGames.map(coverCard).join('')}</div>
+
+            <div class="ms-ref-section-head"><h3>События и обновления</h3><span>Показать все ›</span></div>
+            <div class="ms-ref-events-row">${events.map(eventCard).join('')}</div>
           </section>
         </main>
       </div>`;
     }
+
 
     function renderScreen() {
       refs.screen.classList.remove('store-mode', 'appstore-mode', 'gplay-mode');
@@ -5615,7 +6272,7 @@
 
     function fallbackGame(seed, index) {
       const genre = seed.genre || FALLBACK_GENRES[index % FALLBACK_GENRES.length];
-      return { title: seed.title, genre, rating: (4.2 + Math.random() * .7).toFixed(1), icon: makeSvg('icon', index+1, seed.title, genre), banner: makeSvg('banner', index+1, seed.title, genre), screenshots: [], url: seed.appStoreId ? `https://apps.apple.com/app/id${seed.appStoreId}` : '#', playUrl: seed.playId ? `https://play.google.com/store/apps/details?id=${seed.playId}` : '' };
+      return { title: seed.title, genre, rating: (4.2 + Math.random() * .7).toFixed(1), icon: makeSvg('icon', index+1, seed.title, genre), banner: makeSvg('banner', index+1, seed.title, genre), url: seed.appStoreId ? `https://apps.apple.com/app/id${seed.appStoreId}` : '#', playUrl: seed.playId ? `https://play.google.com/store/apps/details?id=${seed.playId}` : '' };
     }
 
     let cbIndex = 0;
@@ -5656,7 +6313,7 @@
       const fb = fallbackGame(seed, index);
       if (!data) return fb;
       const shots = [].concat(data.screenshotUrls || [], data.ipadScreenshotUrls || []);
-      return { title: data.trackName || fb.title, genre: data.primaryGenreName || fb.genre, rating: data.averageUserRating ? Number(data.averageUserRating).toFixed(1) : fb.rating, icon: data.artworkUrl512 || data.artworkUrl100 || fb.icon, banner: shots[0] || data.artworkUrl512 || fb.banner, screenshots: shots.slice(0, 10), url: data.trackViewUrl || fb.url, playUrl: fb.playUrl };
+      return { title: data.trackName || fb.title, genre: data.primaryGenreName || fb.genre, rating: data.averageUserRating ? Number(data.averageUserRating).toFixed(1) : fb.rating, icon: data.artworkUrl512 || data.artworkUrl100 || fb.icon, banner: shots[0] || data.artworkUrl512 || fb.banner, url: data.trackViewUrl || fb.url, playUrl: fb.playUrl };
     }
 
     async function randomizeEnvironment() {
@@ -5740,7 +6397,7 @@
       attachDrop('icon', refs.iconInput); attachDrop('banner', refs.bannerInput); attachDrop('screenshots', refs.screenshotsInput); attachDrop('video', refs.videoInput);
       $$('[data-variant]').forEach(btn => btn.addEventListener('click', () => { state.variant = btn.dataset.variant; $$('[data-variant]').forEach(b => b.classList.toggle('active', b === btn)); renderAll(); }));
       $$('[data-device]').forEach(btn => btn.addEventListener('click', () => {
-        if ((state.platform === 'yandex' || state.platform === 'fb') && btn.dataset.device === 'mobile') return;
+        if ((state.platform === 'yandex' || state.platform === 'fb' || state.platform === 'mstore') && btn.dataset.device === 'mobile') return;
         state.device = btn.dataset.device;
         refs.stage.classList.toggle('mobile', state.device === 'mobile');
         $$('[data-device]').forEach(b => b.classList.toggle('active', b === btn));
