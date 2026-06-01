@@ -5380,180 +5380,92 @@
 
 
 
-/* === Microsoft Store hard exact sizes, no viewport scaling === */
-.ms-ref-main {
-  overflow-x: auto !important;
-  overflow-y: auto !important;
+/* === Microsoft Store bestsellers cover overlay restore === */
+.ms-ref-game-card {
+  position: relative !important;
+  text-decoration: none !important;
+  color: #fff !important;
 }
 
-.ms-ref-page {
-  width: 1652px !important;
-  min-width: 1652px !important;
-  max-width: none !important;
-  padding-left: 0 !important;
-  padding-right: 0 !important;
-  margin-left: auto !important;
-  margin-right: auto !important;
-  --ms-hero-main-w: 989px !important;
-  --ms-hero-main-h: 556px !important;
-  --ms-promo-large-w: 647px !important;
-  --ms-promo-large-h: 356px !important;
-  --ms-promo-small-w: 317px !important;
-  --ms-promo-small-h: 188px !important;
-  --ms-scale: 1 !important;
+.ms-ref-game-card > strong,
+.ms-ref-game-card > span {
+  display: none !important;
 }
 
-.ms-ref-hero-grid {
-  width: 1652px !important;
-  min-width: 1652px !important;
-  max-width: 1652px !important;
-  height: 556px !important;
-  min-height: 556px !important;
+.ms-ref-cover-art {
+  position: relative !important;
+  overflow: hidden !important;
+  background: #202024 !important;
+}
+
+.ms-ref-cover-art::before {
+  content: "" !important;
+  position: absolute !important;
+  inset: 0 !important;
+  z-index: 2 !important;
+  pointer-events: none !important;
+  background:
+    linear-gradient(180deg,
+      rgba(0,0,0,0) 38%,
+      rgba(0,0,0,.28) 62%,
+      rgba(0,0,0,.78) 100%) !important;
+}
+
+.ms-ref-cover-art::after {
+  content: "" !important;
+  position: absolute !important;
+  inset: auto 0 0 0 !important;
+  height: 46% !important;
+  z-index: 3 !important;
+  pointer-events: none !important;
+  background: linear-gradient(180deg, rgba(15,15,16,0), rgba(15,15,16,.72) 58%, rgba(15,15,16,.95)) !important;
+  backdrop-filter: blur(8px) saturate(1.05) !important;
+  -webkit-backdrop-filter: blur(8px) saturate(1.05) !important;
+  opacity: .92 !important;
+}
+
+.ms-ref-cover-overlay {
+  position: absolute !important;
+  left: 13px !important;
+  right: 13px !important;
+  bottom: 12px !important;
+  z-index: 5 !important;
   display: grid !important;
-  grid-template-columns: 989px 647px !important;
-  grid-template-rows: 556px !important;
-  gap: 16px !important;
-  justify-content: start !important;
-  align-items: start !important;
+  gap: 4px !important;
+  color: #fff !important;
+  pointer-events: none !important;
 }
 
-.ms-ref-hero-main {
-  width: 989px !important;
-  min-width: 989px !important;
-  max-width: 989px !important;
-  height: 556px !important;
-  min-height: 556px !important;
-  max-height: 556px !important;
-  aspect-ratio: auto !important;
+.ms-ref-cover-overlay strong,
+.ms-ref-cover-overlay span {
+  display: block !important;
+  min-width: 0 !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  text-shadow: 0 2px 10px rgba(0,0,0,.74) !important;
 }
 
-.ms-ref-hero-side {
-  width: 647px !important;
-  min-width: 647px !important;
-  max-width: 647px !important;
-  height: 556px !important;
-  min-height: 556px !important;
-  max-height: 556px !important;
-  display: grid !important;
-  grid-template-rows: 356px 188px !important;
-  gap: 12px !important;
+.ms-ref-cover-overlay strong {
+  color: #fff !important;
+  font-size: 15px !important;
+  line-height: 1.12 !important;
+  font-weight: 850 !important;
+  letter-spacing: -.025em !important;
 }
 
-.ms-ref-promo-large {
-  width: 647px !important;
-  min-width: 647px !important;
-  max-width: 647px !important;
-  height: 356px !important;
-  min-height: 356px !important;
-  max-height: 356px !important;
-  aspect-ratio: auto !important;
+.ms-ref-cover-overlay span {
+  color: rgba(255,255,255,.76) !important;
+  font-size: 12px !important;
+  line-height: 1.2 !important;
+  font-weight: 650 !important;
 }
 
-.ms-ref-promo-row {
-  width: 647px !important;
-  min-width: 647px !important;
-  max-width: 647px !important;
-  height: 188px !important;
-  min-height: 188px !important;
-  max-height: 188px !important;
-  display: grid !important;
-  grid-template-columns: 317px 317px !important;
-  gap: 13px !important;
-}
-
-.ms-ref-promo-small {
-  width: 317px !important;
-  min-width: 317px !important;
-  max-width: 317px !important;
-  height: 188px !important;
-  min-height: 188px !important;
-  max-height: 188px !important;
-  aspect-ratio: auto !important;
-}
-
-.ms-ref-list-icon,
-.ms-ref-list-icon.asset-frame,
-.ms-ref-event-icon,
-.ms-ref-event-icon.asset-frame {
-  width: 82px !important;
-  min-width: 82px !important;
-  max-width: 82px !important;
-  height: 82px !important;
-  min-height: 82px !important;
-  max-height: 82px !important;
-}
-
-.ms-ref-list-item,
-.ms-ref-event-info {
-  grid-template-columns: 82px minmax(0, 1fr) !important;
-}
-
-/* Keep exact sizes until the viewport is truly narrow; then stack instead of scaling. */
-@media (max-width: 1180px) {
-  .ms-ref-page {
-    width: calc(100vw - 48px) !important;
-    min-width: 0 !important;
-  }
-
-  .ms-ref-hero-grid {
-    width: 100% !important;
-    min-width: 0 !important;
-    max-width: none !important;
-    height: auto !important;
-    min-height: 0 !important;
-    grid-template-columns: 1fr !important;
-    grid-template-rows: auto auto !important;
-  }
-
-  .ms-ref-hero-main {
-    width: 100% !important;
-    min-width: 0 !important;
-    max-width: none !important;
-    height: auto !important;
-    min-height: 0 !important;
-    max-height: none !important;
-    aspect-ratio: 989 / 556 !important;
-  }
-
-  .ms-ref-hero-side {
-    width: 100% !important;
-    min-width: 0 !important;
-    max-width: none !important;
-    height: auto !important;
-    min-height: 0 !important;
-    max-height: none !important;
-    grid-template-rows: auto auto !important;
-  }
-
-  .ms-ref-promo-large {
-    width: 100% !important;
-    min-width: 0 !important;
-    max-width: none !important;
-    height: auto !important;
-    min-height: 0 !important;
-    max-height: none !important;
-    aspect-ratio: 647 / 356 !important;
-  }
-
-  .ms-ref-promo-row {
-    width: 100% !important;
-    min-width: 0 !important;
-    max-width: none !important;
-    height: auto !important;
-    min-height: 0 !important;
-    max-height: none !important;
-    grid-template-columns: 1fr 1fr !important;
-  }
-
-  .ms-ref-promo-small {
-    width: 100% !important;
-    min-width: 0 !important;
-    max-width: none !important;
-    height: auto !important;
-    min-height: 0 !important;
-    max-height: none !important;
-    aspect-ratio: 317 / 188 !important;
-  }
+.ms-ref-cover-media,
+.ms-ref-cover-media.asset-frame {
+  position: absolute !important;
+  inset: 0 !important;
+  z-index: 1 !important;
 }
 
 </style>
@@ -6405,9 +6317,13 @@
       const coverCard = (g, i) => {
         const cover = g.own ? ownCover : msStoreCover(g, i);
         return `<a class="ms-ref-game-card" href="${g.own ? '#' : envLink(g)}" ${g.own ? '' : 'target="_blank" rel="noopener noreferrer"'}>
-          <div class="ms-ref-cover-art">${assetFrame(cover, '1440×2160', 'ms-ref-cover-media')}</div>
-          <strong>${escapeHtml(g.title || 'Game')}</strong>
-          <span>${escapeHtml(g.genre || 'Game')} · ${escapeHtml(g.rating || '4.8')} ★</span>
+          <div class="ms-ref-cover-art">
+            ${assetFrame(cover, '1440×2160', 'ms-ref-cover-media')}
+            <div class="ms-ref-cover-overlay">
+              <strong>${escapeHtml(g.title || 'Game')}</strong>
+              <span>${escapeHtml(g.genre || 'Game')} · ${escapeHtml(g.rating || '4.8')} ★</span>
+            </div>
+          </div>
         </a>`;
       };
 
