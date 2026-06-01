@@ -5468,6 +5468,102 @@
   z-index: 1 !important;
 }
 
+
+
+/* === Microsoft Store soft flowing overlay for cover cards === */
+.ms-ref-cover-art {
+  isolation: isolate !important;
+}
+
+.ms-ref-cover-art::before {
+  content: "" !important;
+  position: absolute !important;
+  inset: 0 !important;
+  z-index: 2 !important;
+  pointer-events: none !important;
+  background:
+    radial-gradient(120% 78% at 50% 100%,
+      rgba(0,0,0,.72) 0%,
+      rgba(0,0,0,.50) 31%,
+      rgba(0,0,0,.20) 58%,
+      rgba(0,0,0,0) 78%) !important;
+  opacity: .98 !important;
+}
+
+.ms-ref-cover-art::after {
+  content: "" !important;
+  position: absolute !important;
+  left: -8% !important;
+  right: -8% !important;
+  bottom: -10% !important;
+  height: 68% !important;
+  z-index: 3 !important;
+  pointer-events: none !important;
+  background:
+    linear-gradient(180deg,
+      rgba(10,10,12,0) 0%,
+      rgba(10,10,12,.10) 22%,
+      rgba(10,10,12,.38) 48%,
+      rgba(10,10,12,.72) 74%,
+      rgba(10,10,12,.96) 100%) !important;
+  filter: blur(10px) saturate(1.05) !important;
+  opacity: .96 !important;
+  -webkit-mask-image: linear-gradient(180deg,
+      transparent 0%,
+      rgba(0,0,0,.28) 18%,
+      black 46%,
+      black 100%) !important;
+  mask-image: linear-gradient(180deg,
+      transparent 0%,
+      rgba(0,0,0,.28) 18%,
+      black 46%,
+      black 100%) !important;
+}
+
+.ms-ref-cover-overlay {
+  bottom: 14px !important;
+  z-index: 6 !important;
+}
+
+.ms-ref-cover-overlay::before {
+  content: "" !important;
+  position: absolute !important;
+  z-index: -1 !important;
+  left: -10px !important;
+  right: -10px !important;
+  bottom: -9px !important;
+  height: 96px !important;
+  pointer-events: none !important;
+  background:
+    radial-gradient(90% 88% at 50% 100%,
+      rgba(0,0,0,.38) 0%,
+      rgba(0,0,0,.22) 44%,
+      rgba(0,0,0,0) 78%) !important;
+  filter: blur(13px) !important;
+  opacity: .86 !important;
+}
+
+.ms-ref-cover-overlay strong,
+.ms-ref-cover-overlay span {
+  text-shadow:
+    0 1px 2px rgba(0,0,0,.72),
+    0 6px 18px rgba(0,0,0,.62) !important;
+}
+
+/* Hero/promo slots keep banner assets. Cover cards stay screenshots/icon only. */
+.ms-ref-hero-media,
+.ms-ref-promo-media {
+  background: #202024 !important;
+}
+
+.ms-ref-hero-media img,
+.ms-ref-promo-media img,
+.ms-ref-hero-media video,
+.ms-ref-promo-media video {
+  object-fit: cover !important;
+  object-position: center !important;
+}
+
 </style>
 </head>
 <body data-platform="yandex" data-safe="false" data-readability="false" data-test="normal" data-compare="false">
